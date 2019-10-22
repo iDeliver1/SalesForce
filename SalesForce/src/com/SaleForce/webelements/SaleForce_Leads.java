@@ -16,7 +16,7 @@ public class SaleForce_Leads {
 	ExtentReports Extndreport;
 	
 	public SaleForce_Leads(ExtentTest logger,WebDriver driver, ExtentReports Extndreport) {
-
+		
 		this.driver = driver;
 		this.logger = logger;
 		this.Extndreport = Extndreport;
