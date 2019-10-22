@@ -20,7 +20,7 @@ public class Excel_Libraries {
 	static Workbook WB;
 	
 	//-------------------------------------------Excel reporter---------------------------------------------
-	 public static void Excel_Reporter(String Step_details,String Actual,String Status,String Time) throws Throwable
+	 public static void fExcelReporter(String Step_details,String Actual,String Status,String Time) throws Throwable
 			{ 
 				String Attribute[] = {"Step_details","Actual","Status","Time"};
 					try{
@@ -50,7 +50,7 @@ public class Excel_Libraries {
 			}
 		    
 	//------------------------------------------Create Excel file------------------------------------------
-	 public static String Create_Excel_file() throws Throwable
+	 public static String fCreateExcelfile() throws Throwable
 			{
 				Workbook Wb = null;
 				if ((new File(Excel_path)).exists()==false) {	
@@ -70,7 +70,7 @@ public class Excel_Libraries {
 			}
 
 	 //------------------------------------------For data access--------------------------------------------
-	 public static String Read(String Attri_name,String File_name,String Sheet_name) throws Throwable
+	 public static String fRead(String Attri_name,String File_name,String Sheet_name) throws Throwable
 	     {
 			FileInputStream fin=new FileInputStream(System.getProperty("user.dir")+"\\src\\RA_Data\\"+File_name);
 
@@ -91,7 +91,7 @@ public class Excel_Libraries {
 			return null;		  
 		}
 	 
-	 public static String[][] Read_Data_itera(String File_path,String Sheet_name) throws Throwable
+	 public static String[][] fReadDataitera(String File_path,String Sheet_name) throws Throwable
      {
 		String[][] tabArray = null;
 		FileInputStream fin=new FileInputStream(File_path);

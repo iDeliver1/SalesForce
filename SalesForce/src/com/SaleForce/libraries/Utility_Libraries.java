@@ -21,10 +21,10 @@ import com.relevantcodes.extentreports.LogStatus;
 public class Utility_Libraries {
 
 	public static WebDriver driver;
-	static String Folder_path = System.getProperty("user.dir")+"\\src\\Test_Result\\Report"+Utility_Libraries.Time_stamp();
-	static String Excel_path = Folder_path+"\\Excelreport"+Utility_Libraries.Time_stamp()+".xls";
+	static String Folder_path = System.getProperty("user.dir")+"\\src\\Test_Result\\Report"+Utility_Libraries.fTimestamp();
+	static String Excel_path = Folder_path+"\\Excelreport"+Utility_Libraries.fTimestamp()+".xls";
 
-  public static WebDriver getBrowser(String strBrowserName)
+  public static WebDriver fgetBrowser(String strBrowserName)
 	{
 		switch(strBrowserName.toLowerCase())
 		{	
@@ -36,17 +36,17 @@ public class Utility_Libraries {
 		//------------------------------------------------
 		//launch in chrome
 		case "chrome":
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\Drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\driver\\chromedriver.exe");
 		driver=new ChromeDriver();
 		break;
 		//------------------------------------------------		
 		//launch in internetexplore
 		case "internetexplore":
-		System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\Drivers\\IEDriverServer.exe");
+		System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\driver\\IEDriverServer.exe");
 		driver=new InternetExplorerDriver();
 		
 		case "ie":
-			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\Drivers\\IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\driver\\IEDriverServer.exe");
 			driver=new InternetExplorerDriver();
 		//------------------------------------------------
 		default:
@@ -55,9 +55,9 @@ public class Utility_Libraries {
 		return driver;
 	}
 	
-	public static ExtentReports Report()
+	public static ExtentReports fReport()
 	{	
-	 	ExtentReports report1 = new ExtentReports(Folder_path+"\\Test"+Utility_Libraries.Time_stamp()+".html");
+	 	ExtentReports report1 = new ExtentReports(Folder_path+"\\Test"+Utility_Libraries.fTimestamp()+".html");
 		report1.addSystemInfo("Java version", "JDK 8");
 		report1.addSystemInfo("Machine", "SourabhLaptop");
 		report1.config().documentTitle("Sourabh");
@@ -66,7 +66,7 @@ public class Utility_Libraries {
 		return report1;
 	}
 	
-   public static String Time_stamp()
+   public static String fTimestamp()
 	{
 		Date now = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy-hh-mm-ss");
@@ -74,16 +74,16 @@ public class Utility_Libraries {
 		return time;
 	}
 	    
-   public static String Screen_Report(WebDriver driver) throws Throwable
+   public static String fScreenReport(WebDriver driver) throws Throwable
 	{
     	File source_image = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		String Image_path = Folder_path+"\\Screeshot"+Utility_Libraries.Time_stamp()+".png";
+		String Image_path = Folder_path+"\\Screeshot"+Utility_Libraries.fTimestamp()+".png";
 		File Desti_image = new File(Image_path);
 		FileUtils.copyFile(source_image,Desti_image);
 		return ""+Desti_image;
 	}
 
-   public static String GetElement(String Keys,String FileName) throws Throwable
+   public static String fGetElement(String Keys,String FileName) throws Throwable
 	{
 		FileInputStream pagobj =null;
 		Properties obj = new Properties();
@@ -99,7 +99,7 @@ public class Utility_Libraries {
 			return obj.getProperty(Keys);
 	}
    
-   public static String[] Verify_value(String[] Array,ExtentTest logger)
+   public static String[] fVerifyvalue(String[] Array,ExtentTest logger)
    {
 	   for(int i=0;i<=Array.length-1;i++)
 	   {
@@ -108,24 +108,24 @@ public class Utility_Libraries {
 	   }
 	   return Array;
    }
-   public void Report_pass(String Step_details,String Actual,ExtentTest logger) throws Throwable
+   public void fReportpass(String Step_details,String Actual,ExtentTest logger) throws Throwable
 	{
 		  //===========================Reporter======================================================================================
 		  //=========================================================================================================================
 	      logger.log(LogStatus.PASS,Step_details,Actual);
-	      logger.log(LogStatus.PASS,logger.addScreenCapture(Utility_Libraries.Screen_Report(driver)));
-	      Excel_Libraries.Excel_Reporter(Step_details,Actual, "PASS",""+new SimpleDateFormat("MM_dd_y_hhmmssa").format(new Date(0)));
+	      logger.log(LogStatus.PASS,logger.addScreenCapture(Utility_Libraries.fScreenReport(driver)));
+	      Excel_Libraries.fExcelReporter(Step_details,Actual, "PASS",""+new SimpleDateFormat("MM_dd_y_hhmmssa").format(new Date(0)));
 		  //=========================================================================================================================
 		  //=========================================================================================================================
 	}
 	
-	public void Report_fail(String Step_details,String Actual,ExtentTest logger,WebDriver driver,ExtentReports Extndreport) throws Throwable
+	public void fReportfail(String Step_details,String Actual,ExtentTest logger,WebDriver driver,ExtentReports Extndreport) throws Throwable
 	{
 		  //===========================Reporter=====================================================================================
 		  //========================================================================================================================
 	      logger.log(LogStatus.FAIL,Step_details,Actual);
-	      logger.log(LogStatus.FAIL,logger.addScreenCapture(Utility_Libraries.Screen_Report(driver)));
-	      Excel_Libraries.Excel_Reporter(Step_details,Actual, "FAIL",""+new SimpleDateFormat("MM_dd_y_hhmmssa").format(new Date(0)));
+	      logger.log(LogStatus.FAIL,logger.addScreenCapture(Utility_Libraries.fScreenReport(driver)));
+	      Excel_Libraries.fExcelReporter(Step_details,Actual, "FAIL",""+new SimpleDateFormat("MM_dd_y_hhmmssa").format(new Date(0)));
 	      Extndreport.endTest(logger);
 	      Extndreport.flush();
 	      driver.close();

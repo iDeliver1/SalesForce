@@ -2,26 +2,47 @@
 <testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18994" started-at="2019-10-22T12:29:08Z" finished-at="2019-10-22T12:29:27Z">
+  <suite name="Default suite" duration-ms="72104" started-at="2019-10-22T16:02:35Z" finished-at="2019-10-22T16:03:47Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18994" started-at="2019-10-22T12:29:08Z" finished-at="2019-10-22T12:29:27Z">
+    <test name="Default test" duration-ms="72104" started-at="2019-10-22T16:02:35Z" finished-at="2019-10-22T16:03:47Z">
       <class name="com.SaleForce.e2e.Test_Run">
-        <test-method status="FAIL" signature="Run()[pri:0, instance:com.SaleForce.e2e.Test_Run@1d9b7cce]" name="Run" duration-ms="18928" started-at="2019-10-22T12:29:08Z" finished-at="2019-10-22T12:29:27Z">
-          <exception class="org.openqa.selenium.NoSuchFrameException">
+        <test-method status="FAIL" signature="Run()[pri:0, instance:com.SaleForce.e2e.Test_Run@1d9b7cce]" name="Run" duration-ms="72005" started-at="2019-10-22T16:02:35Z" finished-at="2019-10-22T16:03:47Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[No frame element found by name or id ifmail.whc
+              <![CDATA[Unable to locate element: {"method":"xpath","selector":"//li[@id='Lead_Tab']"}
+Command duration or timeout: 25 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.53.1', revision: 'a36b8b1', time: '2016-06-30 17:32:46'
 System info: host: 'iDeliver8', ip: '192.168.1.7', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_151'
-Driver info: driver.version: unknown]]>
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=47.0.2, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: f9ea17b9-e63f-4eae-af8a-00ec7c613fdc
+*** Element info: {Using=xpath, value=//li[@id='Lead_Tab']}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchFrameException: No frame element found by name or id ifmail.whc
+              <![CDATA[org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"xpath","selector":"//li[@id='Lead_Tab']"}
+Command duration or timeout: 25 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.53.1', revision: 'a36b8b1', time: '2016-06-30 17:32:46'
 System info: host: 'iDeliver8', ip: '192.168.1.7', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_151'
-Driver info: driver.version: unknown
-at org.openqa.selenium.remote.RemoteWebDriver$RemoteTargetLocator.frame(RemoteWebDriver.java:997)
-at com.SaleForce.e2e.Test_Run.Run(Test_Run.java:23)
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=47.0.2, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: f9ea17b9-e63f-4eae-af8a-00ec7c613fdc
+*** Element info: {Using=xpath, value=//li[@id='Lead_Tab']}
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
+at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:500)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+at com.SaleForce.webelements.SaleForce_Leads.Create_Leads(SaleForce_Leads.java:27)
+at com.SaleForce.e2e.Test_Run.Run(Test_Run.java:21)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -47,9 +68,19 @@ at org.testng.TestNG.run(TestNG.java:1017)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"xpath","selector":"//li[@id='Lead_Tab']"}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.1', revision: 'a36b8b1', time: '2016-06-30 17:32:46'
+System info: host: 'iDeliver8', ip: '192.168.1.7', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_151'
+Driver info: driver.version: unknown
+at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/Ideliver/AppData/Local/Temp/anonymous1475028939788590681webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10770)
+at <anonymous class>.FirefoxDriver.prototype.findElement(file:///C:/Users/Ideliver/AppData/Local/Temp/anonymous1475028939788590681webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10779)
+at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/Ideliver/AppData/Local/Temp/anonymous1475028939788590681webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12661)
+at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///C:/Users/Ideliver/AppData/Local/Temp/anonymous1475028939788590681webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12666)
+at <anonymous class>.DelayedCommand.prototype.execute/<(file:///C:/Users/Ideliver/AppData/Local/Temp/anonymous1475028939788590681webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12608)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchFrameException -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Run -->
