@@ -21,8 +21,8 @@ import com.relevantcodes.extentreports.LogStatus;
 public class Utility_Libraries {
 
 	public static WebDriver driver;
-	static String Folder_path = System.getProperty("user.dir")+"\\src\\Test_Result\\Report"+Utility_Libraries.fTimestamp();
-	static String Excel_path = Folder_path+"\\Excelreport"+Utility_Libraries.fTimestamp()+".xls";
+	static String Report_Folder_path = System.getProperty("user.dir")+"\\Test_Result\\Report"+Utility_Libraries.fTimestamp();
+	static String Report_Excel_path = Report_Folder_path+"\\Excelreport"+Utility_Libraries.fTimestamp()+".xls";
 
   public static WebDriver fgetBrowser(String strBrowserName)
 	{
@@ -57,7 +57,7 @@ public class Utility_Libraries {
 	
 	public static ExtentReports fReport()
 	{	
-	 	ExtentReports report1 = new ExtentReports(Folder_path+"\\Test"+Utility_Libraries.fTimestamp()+".html");
+	 	ExtentReports report1 = new ExtentReports(Report_Folder_path+"\\Test"+Utility_Libraries.fTimestamp()+".html");
 		report1.addSystemInfo("Java version", "JDK 8");
 		report1.addSystemInfo("Machine", "SourabhLaptop");
 		report1.config().documentTitle("Sourabh");
@@ -73,11 +73,11 @@ public class Utility_Libraries {
 		String time = dateFormat.format(now);
 		return time;
 	}
-	    
+	 
    public static String fScreenReport(WebDriver driver) throws Throwable
 	{
     	File source_image = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		String Image_path = Folder_path+"\\Screeshot"+Utility_Libraries.fTimestamp()+".png";
+		String Image_path = Report_Folder_path+"\\Screeshot"+Utility_Libraries.fTimestamp()+".png";
 		File Desti_image = new File(Image_path);
 		FileUtils.copyFile(source_image,Desti_image);
 		return ""+Desti_image;
@@ -89,7 +89,7 @@ public class Utility_Libraries {
 		Properties obj = new Properties();
 		try
 		{ 
-			pagobj = new FileInputStream (System.getProperty("user.dir")+"\\src\\com\\FK\\properties\\" + FileName + ".properties");	
+			pagobj = new FileInputStream (System.getProperty("user.dir")+"\\src\\com\\SaleForce\\properties\\" + FileName + ".properties");
 		}
 		catch (Exception e) 
 		{	

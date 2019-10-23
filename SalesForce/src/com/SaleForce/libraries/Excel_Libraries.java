@@ -15,8 +15,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Excel_Libraries {
 
-	public static String Folder_path = Utility_Libraries.Folder_path;
-	static String Excel_path =  Utility_Libraries.Excel_path;
+	public static String Folder_path = Utility_Libraries.Report_Folder_path;
+	static String Excel_path =  Utility_Libraries.Report_Excel_path;
 	static Workbook WB;
 	
 	//-------------------------------------------Excel reporter---------------------------------------------
@@ -72,8 +72,7 @@ public class Excel_Libraries {
 	 //------------------------------------------For data access--------------------------------------------
 	 public static String fRead(String Attri_name,String File_name,String Sheet_name) throws Throwable
 	     {
-			FileInputStream fin=new FileInputStream(System.getProperty("user.dir")+"\\src\\RA_Data\\"+File_name);
-
+			FileInputStream fin=new FileInputStream(File_name);
 			WB=WorkbookFactory.create(fin);
 			Sheet sh = WB.getSheet(Sheet_name);
 			int Row_cnt = sh.getLastRowNum();	
