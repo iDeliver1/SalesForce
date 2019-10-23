@@ -43,7 +43,7 @@ public class T_CreateLeads {
 			Url 	    = Launch[1];
 			//--------------------------------------------------------------------------------
 			
-			driver = Utility_Libraries.fgetBrowser(Browser);					 
+			driver = Utility_Libraries.fgetBrowser(Browser, driver);					 
 			driver.navigate().to(Url);	
 			driver.manage().window().maximize();
 		}
