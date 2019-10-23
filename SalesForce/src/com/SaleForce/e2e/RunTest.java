@@ -51,10 +51,7 @@ public class RunTest {
 		driver.findElement(By.xpath("//input[@id='ctrc25state']")).sendKeys("Chhattisgarh");
 		driver.findElement(By.xpath("//input[@id='ctrc25country']")).sendKeys("India");
 		driver.findElement(By.xpath("//textarea[@id='Description']")).sendKeys("This is contract");
-		driver.findElement(By.xpath("//div[contains(@class,'pbBottomButtons')]//input[1]")).click();
-		
-		
-		
+		driver.findElement(By.xpath("//div[contains(@class,'pbBottomButtons')]//input[1]")).click();	
 			
 	}
 }
