@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import com.SaleForce.POM.Login;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -15,6 +15,7 @@ public class SaleForce_Login {
 	ExtentTest logger;
 	ExtentReports Extndreport;
 	Utility_Libraries Utility_Object = new Utility_Libraries();
+	Login LoginPOM = new Login();
 	
 	public SaleForce_Login(ExtentTest logger,WebDriver driver, ExtentReports Extndreport) {
 		
@@ -27,21 +28,21 @@ public class SaleForce_Login {
 	{
 		try
 		{
-			driver.findElement(By.xpath("//input[@id='username']")).sendKeys(Username);
-			driver.findElement(By.xpath("//input[@id='password']")).sendKeys(Password);
-			driver.findElement(By.xpath("//input[@id='Login']")).click();
+			driver.findElement(LoginPOM.Username()).sendKeys(Username);
+			driver.findElement(LoginPOM.Password()).sendKeys(Password);
+			driver.findElement(LoginPOM.Signin()).click();
 				try
 				{
-					driver.findElement(By.xpath("//input[@id='emc']")).isDisplayed();
+					driver.findElement(LoginPOM.OTPText()).isDisplayed();
 					String Code = this.Email_Verification(Username);
-					driver.findElement(By.xpath("//input[@id='emc']")).sendKeys(Code);
+					driver.findElement(LoginPOM.OTPText()).sendKeys(Code);
 						//-----------------------------Reporter
 						Utility_Object.fReportpass("OTP Code", "5 digit code have been successfully write", logger, driver);
 						//------------------------------------
-					driver.findElement(By.xpath("//input[@id='save']")).click();
+					driver.findElement(LoginPOM.Save()).click();
 					WebDriverWait wait = new WebDriverWait(driver,6);
 					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='tabContainer']")));
-					driver.findElement(By.xpath("//div[@id='tabContainer']")).isDisplayed();
+					driver.findElement(LoginPOM.Tab()).isDisplayed();
 						//-----------------------------Reporter
 						Utility_Object.fReportpass("Login Pass", "User is successfully logged in SaleForce", logger, driver);
 						//------------------------------------
@@ -50,7 +51,7 @@ public class SaleForce_Login {
 				{
 					try
 					{
-						driver.findElement(By.xpath("//div[@id='error']")).isDisplayed();
+						driver.findElement(LoginPOM.UserError()).isDisplayed();
 					}
 					catch(Exception f)
 					{
@@ -75,11 +76,11 @@ public class SaleForce_Login {
 		objdriver1.get("http://www.yopmail.com/en/");
 			try
 			{
-				objdriver1.findElement(By.xpath("//input[@id='login']")).sendKeys(Username);
-				objdriver1.findElement(By.xpath("//input[@type='submit']")).click();
+				objdriver1.findElement(LoginPOM.YopUser()).sendKeys(Username);
+				objdriver1.findElement(LoginPOM.YopSubmit()).click();
 				objdriver1.switchTo().frame(2);
 				//Get the code from the email0
-				String Code = objdriver1.findElement(By.xpath("//div[@id='mailmillieu']/div[2]")).getText();
+				String Code = objdriver1.findElement(LoginPOM.Message()).getText();
 				Code = Code.substring(290, 315).replaceAll("[^0-9]", "");
 					//-----------------------------Reporter
 					Utility_Object.fReportpass("Email_Verification", "Code has been successfully retrive " + Code, logger, objdriver1);
