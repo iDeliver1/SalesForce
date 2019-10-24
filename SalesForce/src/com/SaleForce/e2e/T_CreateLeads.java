@@ -29,7 +29,7 @@ public class T_CreateLeads {
 		}
 	
 	@Parameters({ "Browser" , "Url" })
-	@Test(priority=1)
+	@Test(priority=1,enabled=true)
 	public void Launch(String Browser, String Url) throws Throwable
 		{
 		    //----------------------------------------------Start report test-------------------------------------------------
@@ -48,7 +48,7 @@ public class T_CreateLeads {
 			driver.manage().window().maximize();
 		}
 	
-	@Test(priority=2)
+	@Test(priority=2,enabled=true)
 	public void Login() throws Throwable
 		{
 		 	//----------------------------------------------Start report test-------------------------------------------------
@@ -58,6 +58,7 @@ public class T_CreateLeads {
 			//---------------------------------Variables--------------------------------------
 			String Username = Excel_Libraries.fRead("Username", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Login");
 			String Password = Excel_Libraries.fRead("Password", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Login");
+			
 			String[] Login = {Username, Password};
 			Utility_Libraries.fVerifyvalue(Login,logger);
 			Username 	= Login[0];
@@ -68,11 +69,31 @@ public class T_CreateLeads {
 			objLoginClass.Login(Username,Password);							
 		}
 	
-	@Test(priority=3)
+	@Test(priority=3,enabled=true)
 	public void Lead_Create() throws Throwable
-	{	
-		SaleForce_Leads objLeadClass = new SaleForce_Leads(logger, driver, Extndreport);
-		objLeadClass.Create_Leads();
-	}
-
+		{	
+		 	//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+			
+			//---------------------------------Variables--------------------------------------
+			String FName 	    = Excel_Libraries.fRead("Fname", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String LName 	    = Excel_Libraries.fRead("Lname", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String CompanyName  = Excel_Libraries.fRead("CompanyName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String Status 	    = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String Campaign 	= Excel_Libraries.fRead("Campaign", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			
+			
+			String[] Leads = {FName, LName, CompanyName, Status, Campaign};
+			Utility_Libraries.fVerifyvalue(Leads,logger);
+			FName 			= Leads[0];
+			LName 		    = Leads[1];
+			CompanyName 	= Leads[2];
+			Status 	        = Leads[3];
+			Campaign 	    = Leads[4];
+			//--------------------------------------------------------------------------------
+			
+			SaleForce_Leads objLeadClass = new SaleForce_Leads(logger, driver, Extndreport);
+			objLeadClass.Create_Leads(FName, LName, CompanyName, Status, Campaign);
+		}
 }

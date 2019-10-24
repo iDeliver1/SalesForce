@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)">
+    <parameter name="Url" value="https://login.salesforce.com/?locale=in"/>
+    <parameter name="Browser" value="chrome"/>
     <classes>
-      <class name="com.SaleForce.e2e.Test_Run">
+      <class name="com.SaleForce.e2e.T_CreateLeads">
         <methods>
-          <include name="Run"/>
+          <include name="Lead_Create"/>
+          <include name="Create"/>
         </methods>
-      </class> <!-- com.SaleForce.e2e.Test_Run -->
+      </class> <!-- com.SaleForce.e2e.T_CreateLeads -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

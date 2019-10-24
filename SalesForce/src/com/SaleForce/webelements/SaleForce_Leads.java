@@ -22,20 +22,37 @@ public class SaleForce_Leads {
 		this.Extndreport = Extndreport;
 	}
 
-	public void Create_Leads()
+	public void Create_Leads(String FName, String LName, String CompanyName, String Status, String Campaign)
 	{
-		driver.findElement(By.xpath("//li[@id='Lead_Tab']")).click();
-		driver.findElement(By.xpath("//input[@name='new']")).click();
-		driver.findElement(By.xpath("//input[@id='name_firstlea2']")).sendKeys("sou");
-		driver.findElement(By.xpath("//input[@id='name_lastlea2']")).sendKeys("cha");
-		driver.findElement(By.xpath("//input[@id='lea3']")).sendKeys("ideliver");
-		Select Status = new Select( driver.findElement(By.xpath("//select[@id='lea13']")));
-		Status.selectByValue("Working - Contacted");
-		driver.findElement(By.xpath("//td[@id='bottomButtonRow']/input[@title='Save']")).click();
-		String LeadName = driver.findElement(By.xpath("//div[@class='textBlock']/h2")).getText();
-		WebDriverWait wait = new WebDriverWait(driver,6);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='textBlock']/h2")));
-		System.out.println(LeadName);
+		try
+		{
+			driver.findElement(By.xpath("//li[@id='Lead_Tab']")).click();
+			
+			driver.findElement(By.xpath("//input[@name='new']")).click();
+			driver.findElement(By.xpath("//input[@id='name_firstlea2']")).sendKeys(FName);
+			driver.findElement(By.xpath("//input[@id='name_lastlea2']")).sendKeys(LName);
+			driver.findElement(By.xpath("//input[@id='lea3']")).sendKeys(CompanyName);
+			driver.findElement(By.xpath("//input[@id='lea20']")).sendKeys(Campaign);
+			Select Status_ = new Select( driver.findElement(By.xpath("//select[@id='lea13']")));
+			Status_.selectByValue(Status);
+			driver.findElement(By.xpath("//td[@id='bottomButtonRow']/input[@title='Save']")).click();
+			String LeadName = driver.findElement(By.xpath("//div[@class='textBlock']/h2")).getText();
+			if(LeadName.contains(FName.concat(" " + LName)))
+			{
+				
+			}
+			else
+			{
+				
+			}
+			WebDriverWait wait = new WebDriverWait(driver,6);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='textBlock']/h2")));
+			System.out.println(LeadName);
+		}
+		catch(Exception E)
+		{
+			
+		}
 	}
 	
 }
