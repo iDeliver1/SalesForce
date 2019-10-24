@@ -58,6 +58,7 @@ public class SaleForce_Login {
 				{
 					try
 					{
+						//verify error message is display
 						driver.findElement(LoginPOM.UserError()).isDisplayed();
 					}
 					catch(Exception f)
@@ -83,7 +84,9 @@ public class SaleForce_Login {
 		objdriver1.get("http://www.yopmail.com/en/");
 			try
 			{
+				//Enter yop email
 				objdriver1.findElement(LoginPOM.YopUser()).sendKeys(Username);
+				//Click on submit button
 				objdriver1.findElement(LoginPOM.YopSubmit()).click();
 				objdriver1.switchTo().frame(2);
 				//Get the code from the email0

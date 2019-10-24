@@ -28,6 +28,12 @@ public class SaleForce_Leads {
 	{
 		try
 		{
+			try
+			{
+				//Close the popup window
+				driver.findElement(CreateLeadPOM.Close()).click();
+			}
+			catch(Exception f) {}
 			driver.findElement(CreateLeadPOM.LeadTab()).click();
 			driver.findElement(CreateLeadPOM.New()).click();
 				try

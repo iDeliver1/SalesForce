@@ -66,7 +66,7 @@ public class T_CreateLeads {
 			//--------------------------------------------------------------------------------
 			
 			SaleForce_Login objLoginClass =  new SaleForce_Login(logger, driver, Extndreport);						
-			objLoginClass.Login(Username,Password);							
+			objLoginClass.Login(Username,Password);						
 		}
 	
 	@Test(priority=3,enabled=true)
