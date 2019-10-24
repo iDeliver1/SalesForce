@@ -1,6 +1,5 @@
 package com.SaleForce.webelements;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -49,6 +48,8 @@ public class SaleForce_Leads {
 			Select Status_ = new Select( driver.findElement(CreateLeadPOM.Status()));
 			Status_.selectByValue(Status);
 			driver.findElement(CreateLeadPOM.Save()).click();
+			WebDriverWait wait = new WebDriverWait(driver,6);
+			wait.until(ExpectedConditions.presenceOfElementLocated(CreateLeadPOM.HeadName()));
 			String LeadName = driver.findElement(CreateLeadPOM.HeadName()).getText();
 				if(LeadName.contains(FName.concat(" " + LName)))
 				{
@@ -62,9 +63,6 @@ public class SaleForce_Leads {
 					Utility_Object.fReportfail("Lead create", "Lead is not successfully created", logger, driver, Extndreport);
 					//------------------------------------
 				}
-			WebDriverWait wait = new WebDriverWait(driver,6);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='textBlock']/h2")));
-			System.out.println(LeadName);
 		}
 		catch(Exception E)
 		{
