@@ -37,8 +37,9 @@ public class SaleForce_Contracts {
 			priceBook.selectByVisibleText("Standard");
 			driver.findElement(By.xpath("//input[@id='ctrc5']")).sendKeys(df.format(dateobj));
 			driver.findElement(By.xpath("//input[@id='ctrc40']")).sendKeys("12");
+			Select OwnerExpiration = new Select(driver.findElement(By.xpath("//select[@id='ctrc13']")));
+			OwnerExpiration.selectByValue("120 Days");
 			driver.findElement(By.xpath("//input[@id='CompanySigned']")).sendKeys("Chris Carpenter");
-			
 			//-------------------------Billing Address----------------------------------------//
 			driver.findElement(By.xpath("//textarea[@id='ctrc25street']")).sendKeys("Uslapur");
 			driver.findElement(By.xpath("//input[@id='ctrc25state']")).sendKeys("Chhattisgarh");
