@@ -1,6 +1,11 @@
 package com.SaleForce.e2e;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -10,6 +15,7 @@ import com.SaleForce.webelements.SaleForce_Leads;
 import com.SaleForce.webelements.SaleForce_Login;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class T_CreateLeads {
 
@@ -95,4 +101,26 @@ public class T_CreateLeads {
 			SaleForce_Leads objLeadClass = new SaleForce_Leads(logger, driver, Extndreport);
 			objLeadClass.Create_Leads(FName, LName, CompanyName, Status, Campaign);
 		}
+	
+		@AfterMethod	
+		public void Flush(ITestResult result) throws Throwable		
+		    {
+				if(result.getStatus()==ITestResult.FAILURE) 
+				{ 			
+					logger.log(LogStatus.FAIL,"Error :"+result.getThrowable());//+report.getClass()+" Test "+logger.getTest().statusMessage);//,ClassTest.takeScreenShot());			
+				}		
+				  if (result.getStatus() == ITestResult.FAILURE) {
+			            logger.log(LogStatus.FAIL, "Test '"+ testName+ "' Failed : Cause>>"+result.getThrowable(),logger.addScreenCapture(Utility_Libraries.fScreenReport(driver)));
+			            Excel_Libraries.fExcelReporter( ""+result.getThrowable()+"" , "Condition must be fullfill", "FAIL",""+new SimpleDateFormat("MM_dd_y_hhmmssa").format(new Date()));
+			            Extndreport.endTest(logger);
+			            Extndreport.flush();
+			            System.exit(1);
+				  	} else if (result.getStatus() == ITestResult.SKIP) {
+			        	logger.log(LogStatus.SKIP, "Test '"+ testName+ "' skipped : Cause>>"+ result.getThrowable(),logger.addScreenCapture(Utility_Libraries.fScreenReport(driver)));
+			        } else {
+			        	logger.log(LogStatus.PASS, "Test  '"+ testName+"'  passed");
+			        }	  
+				  Extndreport.endTest(logger);
+				  Extndreport.flush();
+		    }
 }
