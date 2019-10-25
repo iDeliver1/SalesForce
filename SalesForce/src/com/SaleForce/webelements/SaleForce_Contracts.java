@@ -24,9 +24,8 @@ public class SaleForce_Contracts {
 	
 	public void Create_Contracts()
 	{
-		 driver.findElement(By.xpath("//li[@id='Contract_Tab']//a[contains(text(),'Contracts')]")).click();
-	     driver.findElement(By.xpath("//input[@name='new']")).click();
-	        
+			driver.findElement(By.xpath("//li[@id='Contract_Tab']//a[contains(text(),'Contracts')]")).click();
+		 	driver.findElement(By.xpath("//input[@name='new']")).click();
 	        driver.findElement(By.xpath("//input[@id='ctrc7']")).sendKeys("Amazon");
 	        driver.findElement(By.xpath("//input[@id='ctrc16']")).sendKeys("ABC Company");
 	        driver.findElement(By.xpath("//input[@id='CustomerSignedTitle']")).sendKeys("NewContract");
