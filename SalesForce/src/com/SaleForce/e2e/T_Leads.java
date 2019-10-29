@@ -17,12 +17,12 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class T_CreateLeads {
+public class T_Leads {
 
 	WebDriver driver;						
 	ExtentTest logger;						
 	ExtentReports Extndreport;  			
-	String testName = T_CreateLeads.class.getName();
+	String testName = T_Leads.class.getName();
 	
 	@BeforeTest
 	public void Create() throws Throwable 
