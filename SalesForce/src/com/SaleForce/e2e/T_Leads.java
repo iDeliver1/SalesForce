@@ -54,17 +54,15 @@ public class T_Leads {
 			driver.manage().window().maximize();
 		}
 	
+	@Parameters({ "Username" , "Password" })
 	@Test(priority=2,enabled=true)
-	public void Login() throws Throwable
+	public void Login(String Username, String Password) throws Throwable
 		{
 		 	//----------------------------------------------Start report test-------------------------------------------------
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
 			
 			//---------------------------------Variables--------------------------------------
-			String Username = Excel_Libraries.fRead("Username", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
-			String Password = Excel_Libraries.fRead("Password", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
-			
 			String[] Login = {Username, Password};
 			Utility_Libraries.fVerifyvalue(Login,logger);
 			Username 	= Login[0];
