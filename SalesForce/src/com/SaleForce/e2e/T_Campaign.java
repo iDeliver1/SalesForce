@@ -22,7 +22,7 @@ public class T_Campaign {
 	WebDriver driver;						
 	ExtentTest logger;						
 	ExtentReports Extndreport;  			
-	String testName = T_Leads.class.getName();
+	String testName = T_Campaign.class.getName();
 	
 	@BeforeTest
 	public void Create() throws Throwable 
@@ -85,15 +85,15 @@ public class T_Campaign {
 			String Expected_rev = Excel_Libraries.fRead("Expected_rev", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
 			String Budget_cost  = Excel_Libraries.fRead("Budget_cost", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
 			
-			String[] Leads = {Name, Expected_rev, Budget_cost};
-			Utility_Libraries.fVerifyvalue(Leads,logger);
-			Name 			= Leads[0];
-			Expected_rev    = Leads[1];
-			Budget_cost 	= Leads[2];
+			String[] Campaign = {Name, Expected_rev, Budget_cost};
+			Utility_Libraries.fVerifyvalue(Campaign,logger);
+			Name 			= Campaign[0];
+			Expected_rev    = Campaign[1];
+			Budget_cost 	= Campaign[2];
 			//--------------------------------------------------------------------------------
 			
 			SaleForce_Campaign objCampaignClass = new SaleForce_Campaign(logger, driver, Extndreport);
-			objCampaignClass.Create_Campaign(Name, Expected_rev, Budget_cost);	
+			objCampaignClass.Create_Campaign(Name, Expected_rev, Budget_cost, "day");	
 		}
 	
 	@AfterMethod	

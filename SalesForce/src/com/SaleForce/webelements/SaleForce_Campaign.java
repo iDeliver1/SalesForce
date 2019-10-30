@@ -21,8 +21,12 @@ public class SaleForce_Campaign {
 		this.Extndreport = Extndreport;
 	}
 	
-	public void Create_Campaign(String Name, String Expected_rev, String Budget_cost) throws Throwable
+	public void Create_Campaign(String Name, String Expected_rev, String Budget_cost, String Condition) throws Throwable
 	{
+		
+		String CurrentDate = Utility_Object.fGetCurrentDate();
+		String AddDate = Utility_Object.fAddDate(CurrentDate, 10, Condition);
+		
 		try
 		{
 			driver.findElement(CreateCampaignPOM.Tab()).click();
@@ -47,8 +51,8 @@ public class SaleForce_Campaign {
 					//------------------------------------
 				}
 			driver.findElement(CreateCampaignPOM.Name()).sendKeys(Name);
-			driver.findElement(CreateCampaignPOM.S_Date()).sendKeys();
-			driver.findElement(CreateCampaignPOM.E_Date()).sendKeys();
+			driver.findElement(CreateCampaignPOM.S_Date()).sendKeys(CurrentDate);
+			driver.findElement(CreateCampaignPOM.E_Date()).sendKeys(AddDate);
 			driver.findElement(CreateCampaignPOM.Expected_rev()).sendKeys(Expected_rev);
 			driver.findElement(CreateCampaignPOM.Budget_cost()).sendKeys(Budget_cost);
 			driver.findElement(CreateCampaignPOM.Save()).click();
