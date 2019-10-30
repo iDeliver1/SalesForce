@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="3" total="3" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="52247" started-at="2019-10-29T14:00:16Z" finished-at="2019-10-29T14:01:09Z">
+  <suite name="Suite" duration-ms="4923" started-at="2019-10-29T14:47:47Z" finished-at="2019-10-29T14:47:52Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="52247" started-at="2019-10-29T14:00:16Z" finished-at="2019-10-29T14:01:09Z">
+    <test name="Test" duration-ms="4923" started-at="2019-10-29T14:47:47Z" finished-at="2019-10-29T14:47:52Z">
       <class name="com.SaleForce.e2e.T_Contracts">
-        <test-method status="PASS" signature="Create()[pri:0, instance:com.SaleForce.e2e.T_Contracts@685cb137]" name="Create" is-config="true" duration-ms="579" started-at="2019-10-29T19:30:16Z" finished-at="2019-10-29T19:30:17Z">
+        <test-method status="PASS" signature="Create()[pri:0, instance:com.SaleForce.e2e.T_Contracts@685cb137]" name="Create" is-config="true" duration-ms="470" started-at="2019-10-29T20:17:47Z" finished-at="2019-10-29T20:17:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Create -->
-        <test-method status="FAIL" signature="Launch(java.lang.String, java.lang.String)[pri:1, instance:com.SaleForce.e2e.T_Contracts@685cb137]" name="Launch" duration-ms="46706" started-at="2019-10-29T19:30:17Z" finished-at="2019-10-29T19:31:04Z">
+        <test-method status="FAIL" signature="Launch(java.lang.String, java.lang.String)[pri:1, instance:com.SaleForce.e2e.T_Contracts@685cb137]" name="Launch" duration-ms="4322" started-at="2019-10-29T20:17:48Z" finished-at="2019-10-29T20:17:52Z">
           <params>
             <param index="0">
               <value>
@@ -28,7 +28,7 @@
             <message>
               <![CDATA[session not created: This version of ChromeDriver only supports Chrome version 76
   (Driver info: chromedriver=76.0.3809.126 (d80a294506b4c9d18015e755cee48f953ddc3f2f-refs/branch-heads/3809@{#1024}),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 20.37 seconds
+Command duration or timeout: 2.34 seconds
 Build info: version: '2.53.1', revision: 'a36b8b1', time: '2016-06-30 17:32:46'
 System info: host: 'iDeliver20-PC', ip: '192.168.1.23', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_221'
 Driver info: org.openqa.selenium.chrome.ChromeDriver]]>
@@ -36,7 +36,7 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver]]>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.SessionNotCreatedException: session not created: This version of ChromeDriver only supports Chrome version 76
   (Driver info: chromedriver=76.0.3809.126 (d80a294506b4c9d18015e755cee48f953ddc3f2f-refs/branch-heads/3809@{#1024}),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 20.37 seconds
+Command duration or timeout: 2.34 seconds
 Build info: version: '2.53.1', revision: 'a36b8b1', time: '2016-06-30 17:32:46'
 System info: host: 'iDeliver20-PC', ip: '192.168.1.23', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_221'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
@@ -86,7 +86,7 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Launch -->
-        <test-method status="FAIL" signature="Login(java.lang.String, java.lang.String)[pri:2, instance:com.SaleForce.e2e.T_Contracts@685cb137]" name="Login" duration-ms="2845" started-at="2019-10-29T19:31:04Z" finished-at="2019-10-29T19:31:07Z">
+        <test-method status="FAIL" signature="Login(java.lang.String, java.lang.String)[pri:2, instance:com.SaleForce.e2e.T_Contracts@685cb137]" name="Login" duration-ms="46" started-at="2019-10-29T20:17:52Z" finished-at="2019-10-29T20:17:52Z">
           <params>
             <param index="0">
               <value>
@@ -137,7 +137,7 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="FAIL" signature="Contract_Create()[pri:3, instance:com.SaleForce.e2e.T_Contracts@685cb137]" name="Contract_Create" duration-ms="1752" started-at="2019-10-29T19:31:07Z" finished-at="2019-10-29T19:31:09Z">
+        <test-method status="FAIL" signature="Contract_Create()[pri:3, instance:com.SaleForce.e2e.T_Contracts@685cb137]" name="Contract_Create" duration-ms="37" started-at="2019-10-29T20:17:52Z" finished-at="2019-10-29T20:17:52Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
