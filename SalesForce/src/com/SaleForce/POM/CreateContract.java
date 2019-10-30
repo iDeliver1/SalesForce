@@ -17,5 +17,96 @@ public class CreateContract {
 		By Source = By.xpath(Utility_Libraries.fGetElement("New_Link", "Contracts"));
 		return Source;
 	}
-
+	
+	public By CustomerName() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Customer_Name", "Contracts"));
+		return Source;
+	}
+	
+	public By CustomerSigned() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Customer_Signed", "Contracts"));
+		return Source;
+	}
+	
+	public By CustomerTitle() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Customer_Title", "Contracts"));
+		return Source;
+	}
+	
+	public By CustomerDate() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Customer_Date", "Contracts"));
+		return Source;
+	}
+	
+	public By PriceBook() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Price_Book", "Contracts"));
+		return Source;
+	}
+	
+	public By ContractDate() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Contract_Date", "Contracts"));
+		return Source;
+	}
+	
+	public By ContractMonth() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Contract_Month", "Contracts"));
+		return Source;
+	}
+	
+	public By OwnerExpirationNotice() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Owner_Expiration_Notice", "Contracts"));
+		return Source;
+	}
+	
+	public By CompanySigned() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Company_Signed", "Contracts"));
+		return Source;
+	}
+	
+	public By BillingStreet() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Billing_Street", "Contracts"));
+		return Source;
+	}
+	
+	public By BillingState() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Billing_State", "Contracts"));
+		return Source;
+	}
+	
+	public By BillingCountry() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Billing_Country", "Contracts"));
+		return Source;
+	}
+	
+	public By BillingDescription() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Billing_Description", "Contracts"));
+		return Source;
+	}
+	
+	public By SaveButton() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Save_Button", "Contracts"));
+		return Source;
+	}
+	
+	public By PopUpWindow() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("PopUpWindow", "Contracts"));
+		return Source;
+	}
+	
+	
 }
