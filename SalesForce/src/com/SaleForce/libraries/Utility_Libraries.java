@@ -2,7 +2,9 @@ package com.SaleForce.libraries;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 import org.apache.commons.io.FileUtils;
@@ -131,5 +133,33 @@ public class Utility_Libraries {
 		  //========================================================================================================================
 		  //========================================================================================================================
 	}
-
+	
+	public String fGetCurrentDate()
+	{
+		Date date = new Date();  
+	    SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy");  
+	    String strDate = dateformat.format(date); 
+	    return strDate;
+	}
+	
+	public String fAddDate(String strDate, int Num, String Condition) throws ParseException
+	{
+		SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy");
+		Calendar calender = Calendar.getInstance();
+		calender.setTime(dateformat.parse(strDate));
+			if(Condition.equalsIgnoreCase("year"))
+			{
+				calender.add(Calendar.DAY_OF_YEAR, Num);
+			}
+			else if (Condition.equalsIgnoreCase("month")) 
+			{
+				calender.add(Calendar.MONTH, Num);
+			}
+			else if (Condition.equalsIgnoreCase("day")) 
+			{
+				calender.add(Calendar.DAY_OF_MONTH, Num);
+			}
+		String newDate = dateformat.format(calender.getTime());
+		return newDate;
+	}
 }
