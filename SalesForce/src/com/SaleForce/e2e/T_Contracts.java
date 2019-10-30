@@ -60,9 +60,4 @@ public class T_Contracts {
 			SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
 			objContractClass.Create_Contracts();
 		}
-
-		
-			
-			
-	
 }

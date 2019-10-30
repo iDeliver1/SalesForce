@@ -28,14 +28,14 @@ public class SaleForce_Contracts {
 	public void Create_Contracts() throws Throwable
 	{
 			driver.findElement(CreateContractPOM.ContractTab()).click();
+			Thread.sleep(3000);
 			try
 			{
 				//Close the popup window
 				driver.findElement(CreateContractPOM.PopUpWindow()).click();
 			}
 			catch(Exception f) {}
-           
-			driver.findElement(CreateContractPOM.PopUpWindow()).click();
+			Thread.sleep(3000);
 		 	driver.findElement(CreateContractPOM.NewLink()).click();
 		 	try
 		 	{
@@ -59,11 +59,11 @@ public class SaleForce_Contracts {
 			driver.findElement(CreateContractPOM.CustomerDate()).sendKeys(df.format(dateobj));
 			Select priceBook = new Select(driver.findElement(CreateContractPOM.PriceBook()));
 			priceBook.selectByVisibleText("Standard");
-			driver.findElement(CreateContractPOM.ContractDate()).sendKeys(df.format(dateobj));
 			driver.findElement(CreateContractPOM.ContractMonth()).sendKeys("12");
 			Select OwnerExpiration = new Select(driver.findElement(CreateContractPOM.OwnerExpirationNotice()));
 			OwnerExpiration.selectByValue("120 Days");
 			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys("Chris Carpenter");
+			driver.findElement(CreateContractPOM.ContractDate()).sendKeys(df.format(dateobj));
 			//-------------------------Billing Address----------------------------------------//
 			driver.findElement(CreateContractPOM.BillingStreet()).sendKeys("Uslapur");
 			driver.findElement(CreateContractPOM.BillingState()).sendKeys("Chhattisgarh");
