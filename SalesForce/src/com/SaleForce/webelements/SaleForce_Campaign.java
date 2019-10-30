@@ -21,7 +21,7 @@ public class SaleForce_Campaign {
 		this.Extndreport = Extndreport;
 	}
 	
-	public void Create_Campaign(String Name, String S_Date, String E_Date, String Expected_rev, String Budget_cost) throws Throwable
+	public void Create_Campaign(String Name, String Expected_rev, String Budget_cost) throws Throwable
 	{
 		try
 		{
@@ -47,13 +47,13 @@ public class SaleForce_Campaign {
 					//------------------------------------
 				}
 			driver.findElement(CreateCampaignPOM.Name()).sendKeys(Name);
-			driver.findElement(CreateCampaignPOM.S_Date()).sendKeys(S_Date);
-			driver.findElement(CreateCampaignPOM.E_Date()).sendKeys(E_Date);
+			driver.findElement(CreateCampaignPOM.S_Date()).sendKeys();
+			driver.findElement(CreateCampaignPOM.E_Date()).sendKeys();
 			driver.findElement(CreateCampaignPOM.Expected_rev()).sendKeys(Expected_rev);
 			driver.findElement(CreateCampaignPOM.Budget_cost()).sendKeys(Budget_cost);
 			driver.findElement(CreateCampaignPOM.Save()).click();
-			String LeadName = driver.findElement(CreateCampaignPOM.HeadName()).getText();
-				if(LeadName.contains(Name))
+			String CampaignName = driver.findElement(CreateCampaignPOM.HeadName()).getText();
+				if(CampaignName.contains(Name))
 				{
 					//-----------------------------Reporter
 					Utility_Object.fReportpass("Campaign create", "Campaign is successfully created", logger, driver);
@@ -73,5 +73,4 @@ public class SaleForce_Campaign {
 			//------------------------------------
 		}
 	}
-
 }
