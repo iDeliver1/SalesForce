@@ -25,13 +25,13 @@ public class SaleForce_Campaign {
 	{
 		try
 		{
-			try
-			{
-				//Close the popup window
-				driver.findElement(CreateCampaignPOM.Close()).click();
-			}
-			catch(Exception f) {}
 			driver.findElement(CreateCampaignPOM.Tab()).click();
+				try
+				{
+					//Close the popup window
+					driver.findElement(CreateCampaignPOM.Close()).click();
+				}
+				catch(Exception f) {}
 			driver.findElement(CreateCampaignPOM.New()).click();
 				try
 				{
