@@ -62,8 +62,8 @@ public class T_Leads {
 			logger 		= Extndreport.startTest(testName);
 			
 			//---------------------------------Variables--------------------------------------
-			String Username = Excel_Libraries.fRead("Username", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Login");
-			String Password = Excel_Libraries.fRead("Password", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Login");
+			String Username = Excel_Libraries.fRead("Username", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String Password = Excel_Libraries.fRead("Password", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
 			
 			String[] Login = {Username, Password};
 			Utility_Libraries.fVerifyvalue(Login,logger);
@@ -99,7 +99,7 @@ public class T_Leads {
 			//--------------------------------------------------------------------------------
 			
 			SaleForce_Leads objLeadClass = new SaleForce_Leads(logger, driver, Extndreport);
-			objLeadClass.Create_Leads(FName, LName, CompanyName, Status, Campaign);
+			objLeadClass.Create_Leads(FName, LName, CompanyName, Status);
 		}
 	
 		@AfterMethod	
