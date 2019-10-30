@@ -3,13 +3,10 @@ package com.SaleForce.webelements;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.SaleForce.POM.CreateContract;
+import com.SaleForce.libraries.Utility_Libraries;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
@@ -19,6 +16,7 @@ public class SaleForce_Contracts {
 	ExtentTest logger;
 	ExtentReports Extndreport;
 	CreateContract CreateContractPOM = new CreateContract();
+	Utility_Libraries UtilityObject = new Utility_Libraries();
 	
 	public SaleForce_Contracts(ExtentTest logger,WebDriver driver,ExtentReports Extndreport)
 	{
@@ -30,10 +28,29 @@ public class SaleForce_Contracts {
 	public void Create_Contracts() throws Throwable
 	{
 			driver.findElement(CreateContractPOM.ContractTab()).click();
-            WebDriverWait wait = new WebDriverWait(driver,30);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(CreateContractPOM.PopUpWindow()));
+			try
+			{
+				//Close the popup window
+				driver.findElement(CreateContractPOM.PopUpWindow()).click();
+			}
+			catch(Exception f) {}
+           
 			driver.findElement(CreateContractPOM.PopUpWindow()).click();
 		 	driver.findElement(CreateContractPOM.NewLink()).click();
+		 	try
+		 	{
+		 		driver.findElement(CreateContractPOM.CustomerName()).isDisplayed();
+				//-----------------------------Reporter
+		 		UtilityObject.fReportpass("Create Lead", "Create Contract page is open successfully", logger, driver);
+				//------------------------------------
+		 	}
+		 	
+		 	catch(Exception e)
+		 	{
+		 		//-----------------------------Reporter
+		 		UtilityObject.fReportfail("Create Lead", "Error :" + e +" Create Contract page is not open successfully", logger, driver, Extndreport);
+				//------------------------------------
+		 	}
 	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys("Amazon");
 	        driver.findElement(CreateContractPOM.CustomerSigned()).sendKeys("ABC Company");
 	        driver.findElement(CreateContractPOM.CustomerTitle()).sendKeys("NewContract");
