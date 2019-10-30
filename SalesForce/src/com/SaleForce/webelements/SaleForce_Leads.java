@@ -24,20 +24,21 @@ public class SaleForce_Leads {
 		this.Extndreport = Extndreport;
 	}
 
-	public void Create_Leads(String FName, String LName, String CompanyName, String Status, String Campaign) throws Throwable
+	public void Create_Leads(String FName, String LName, String CompanyName, String Status) throws Throwable
 	{
 		try
 		{
-			try
-			{
-				//Close the popup window
-				driver.findElement(CreateLeadPOM.Close()).click();
-			}
-			catch(Exception f) {}
 			driver.findElement(CreateLeadPOM.LeadTab()).click();
+				try
+				{
+					//Close the popup window
+					driver.findElement(CreateLeadPOM.Close()).click();
+				}
+				catch(Exception f) {}
 			driver.findElement(CreateLeadPOM.New()).click();
 				try
 				{
+					driver.findElement(CreateLeadPOM.FName()).isDisplayed();
 					//-----------------------------Reporter
 					Utility_Object.fReportpass("Create Lead", "Create Lead page is open successfully", logger, driver);
 					//------------------------------------
