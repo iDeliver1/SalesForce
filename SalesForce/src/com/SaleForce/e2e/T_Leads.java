@@ -54,17 +54,15 @@ public class T_Leads {
 			driver.manage().window().maximize();
 		}
 	
+	@Parameters({ "Username" , "Password" })
 	@Test(priority=2,enabled=true)
-	public void Login() throws Throwable
+	public void Login(String Username, String Password) throws Throwable
 		{
 		 	//----------------------------------------------Start report test-------------------------------------------------
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
 			
 			//---------------------------------Variables--------------------------------------
-			String Username = Excel_Libraries.fRead("Username", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
-			String Password = Excel_Libraries.fRead("Password", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
-			
 			String[] Login = {Username, Password};
 			Utility_Libraries.fVerifyvalue(Login,logger);
 			Username 	= Login[0];
@@ -87,24 +85,22 @@ public class T_Leads {
 			String LName 	    = Excel_Libraries.fRead("Lname", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
 			String CompanyName  = Excel_Libraries.fRead("CompanyName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
 			String Status 	    = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
-			String Campaign 	= Excel_Libraries.fRead("Campaign", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
 			
-			String[] Leads = {FName, LName, CompanyName, Status, Campaign};
+			String[] Leads = {FName, LName, CompanyName, Status};
 			Utility_Libraries.fVerifyvalue(Leads,logger);
 			FName 			= Leads[0];
 			LName 		    = Leads[1];
 			CompanyName 	= Leads[2];
 			Status 	        = Leads[3];
-			Campaign 	    = Leads[4];
 			//--------------------------------------------------------------------------------
 			
 			SaleForce_Leads objLeadClass = new SaleForce_Leads(logger, driver, Extndreport);
 			objLeadClass.Create_Leads(FName, LName, CompanyName, Status);
 		}
 	
-		@AfterMethod	
-		public void Flush(ITestResult result) throws Throwable		
-		    {
+	@AfterMethod	
+	public void Flush(ITestResult result) throws Throwable		
+		{
 				if(result.getStatus()==ITestResult.FAILURE) 
 				{ 			
 					logger.log(LogStatus.FAIL,"Error :"+result.getThrowable());//+report.getClass()+" Test "+logger.getTest().statusMessage);//,ClassTest.takeScreenShot());			
@@ -122,5 +118,5 @@ public class T_Leads {
 			        }	  
 				  Extndreport.endTest(logger);
 				  Extndreport.flush();
-		    }
+		}
 }
