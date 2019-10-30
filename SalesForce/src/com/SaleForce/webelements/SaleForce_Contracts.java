@@ -3,8 +3,12 @@ package com.SaleForce.webelements;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.SaleForce.POM.CreateContract;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -26,6 +30,9 @@ public class SaleForce_Contracts {
 	public void Create_Contracts() throws Throwable
 	{
 			driver.findElement(CreateContractPOM.ContractTab()).click();
+            WebDriverWait wait = new WebDriverWait(driver,30);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(CreateContractPOM.PopUpWindow()));
+			driver.findElement(CreateContractPOM.PopUpWindow()).click();
 		 	driver.findElement(CreateContractPOM.NewLink()).click();
 	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys("Amazon");
 	        driver.findElement(CreateContractPOM.CustomerSigned()).sendKeys("ABC Company");

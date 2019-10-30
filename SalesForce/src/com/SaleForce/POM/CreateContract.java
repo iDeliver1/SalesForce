@@ -102,4 +102,11 @@ public class CreateContract {
 		return Source;
 	}
 	
+	public By PopUpWindow() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("PopUpWindow", "Contracts"));
+		return Source;
+	}
+	
+	
 }
