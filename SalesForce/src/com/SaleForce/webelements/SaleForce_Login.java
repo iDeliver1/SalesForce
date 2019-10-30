@@ -80,7 +80,7 @@ public class SaleForce_Login {
 	public String Email_Verification(String Username) throws Throwable
 	{
 		WebDriver objdriver1 = null;
-		objdriver1 = Utility_Libraries.fgetBrowser("firefox", objdriver1);
+		objdriver1 = Utility_Libraries.fgetBrowser("chrome", objdriver1);
 		objdriver1.get("http://www.yopmail.com/en/");
 			try
 			{
