@@ -54,17 +54,15 @@ public class T_Campaign {
 			driver.manage().window().maximize();
 		}
 	
+	@Parameters({ "Username" , "Password" })
 	@Test(priority=2,enabled=true)
-	public void Login() throws Throwable
+	public void Login(String Username, String Password) throws Throwable
 		{
 		 	//----------------------------------------------Start report test-------------------------------------------------
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
 			
 			//---------------------------------Variables--------------------------------------
-			String Username = Excel_Libraries.fRead("Username", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
-			String Password = Excel_Libraries.fRead("Password", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
-			
 			String[] Login = {Username, Password};
 			Utility_Libraries.fVerifyvalue(Login,logger);
 			Username 	= Login[0];
@@ -83,15 +81,21 @@ public class T_Campaign {
 			logger 		= Extndreport.startTest(testName);
 		
 			//---------------------------------Variables--------------------------------------
-			String Name 	    = Excel_Libraries.fRead("Fname", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
-			String Expected_rev = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
-			String Budget_cost  = Excel_Libraries.fRead("Campaign", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
+			String Name 	    = Excel_Libraries.fRead("Name", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
+			String Expected_rev = Excel_Libraries.fRead("Expected_rev", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
+			String Budget_cost  = Excel_Libraries.fRead("Budget_cost", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
+			
+			String[] Leads = {Name, Expected_rev, Budget_cost};
+			Utility_Libraries.fVerifyvalue(Leads,logger);
+			Name 			= Leads[0];
+			Expected_rev    = Leads[1];
+			Budget_cost 	= Leads[2];
+			//--------------------------------------------------------------------------------
 			
 			SaleForce_Campaign objCampaignClass = new SaleForce_Campaign(logger, driver, Extndreport);
-			objCampaignClass.Create_Campaign(Name, Expected_rev, Budget_cost);
-			
-			
+			objCampaignClass.Create_Campaign(Name, Expected_rev, Budget_cost);	
 		}
+	
 	@AfterMethod	
 	public void Flush(ITestResult result) throws Throwable		
 	    {

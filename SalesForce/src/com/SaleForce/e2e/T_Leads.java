@@ -98,9 +98,9 @@ public class T_Leads {
 			objLeadClass.Create_Leads(FName, LName, CompanyName, Status);
 		}
 	
-		@AfterMethod	
-		public void Flush(ITestResult result) throws Throwable		
-		    {
+	@AfterMethod	
+	public void Flush(ITestResult result) throws Throwable		
+		{
 				if(result.getStatus()==ITestResult.FAILURE) 
 				{ 			
 					logger.log(LogStatus.FAIL,"Error :"+result.getThrowable());//+report.getClass()+" Test "+logger.getTest().statusMessage);//,ClassTest.takeScreenShot());			
@@ -118,5 +118,5 @@ public class T_Leads {
 			        }	  
 				  Extndreport.endTest(logger);
 				  Extndreport.flush();
-		    }
+		}
 }
