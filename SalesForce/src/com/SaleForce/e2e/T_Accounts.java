@@ -4,19 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
 import com.SaleForce.libraries.Excel_Libraries;
 import com.SaleForce.libraries.Utility_Libraries;
-import com.SaleForce.webelements.SaleForce_Contracts;
+import com.SaleForce.webelements.SaleForce_Accounts;
 import com.SaleForce.webelements.SaleForce_Login;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
-public class T_Contracts {
-	
+public class T_Accounts {
 	WebDriver driver;						
 	ExtentTest logger;						
 	ExtentReports Extndreport;  			
-	String testName = T_Contracts.class.getName();
+	String testName = T_Accounts.class.getName();
 
 	@BeforeTest
 	public void Create() throws Throwable 
@@ -55,11 +55,10 @@ public class T_Contracts {
 			}
 		
 		@Test(priority=3)
-		public void Contract_Create() throws Throwable
+		public void Account_Create() throws Throwable
 		{	
-			SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
-			objContractClass.Create_Contracts();
+			SaleForce_Accounts objAccountClass = new SaleForce_Accounts(logger, driver, Extndreport);
+			objAccountClass.Create_Accounts();
 		}
-		
-		
+
 }
