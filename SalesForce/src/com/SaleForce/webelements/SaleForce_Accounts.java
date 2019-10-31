@@ -19,6 +19,7 @@ public class SaleForce_Accounts {
 	
 	public SaleForce_Accounts(ExtentTest logger,WebDriver driver,ExtentReports Extndreport) {
 
+		
 		this.driver = driver;
 		this.logger = logger;
 		this.Extndreport = Extndreport;
