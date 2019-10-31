@@ -72,30 +72,6 @@ public class CreateContract {
 		return Source;
 	}
 	
-	public By BillingStreet() throws Throwable
-	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Billing_Street", "Contracts"));
-		return Source;
-	}
-	
-	public By BillingState() throws Throwable
-	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Billing_State", "Contracts"));
-		return Source;
-	}
-	
-	public By BillingCountry() throws Throwable
-	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Billing_Country", "Contracts"));
-		return Source;
-	}
-	
-	public By BillingDescription() throws Throwable
-	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Billing_Description", "Contracts"));
-		return Source;
-	}
-	
 	public By SaveButton() throws Throwable
 	{
 		By Source = By.xpath(Utility_Libraries.fGetElement("Save_Button", "Contracts"));
@@ -108,5 +84,10 @@ public class CreateContract {
 		return Source;
 	}
 	
+	public By DescriptionArea() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Description_Area", "Contracts"));
+		return Source;
+	}
 	
 }

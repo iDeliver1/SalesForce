@@ -37,20 +37,19 @@ public class SaleForce_Contracts {
 			catch(Exception f) {}
 			Thread.sleep(3000);
 		 	driver.findElement(CreateContractPOM.NewLink()).click();
-		 	try
-		 	{
-		 		driver.findElement(CreateContractPOM.CustomerName()).isDisplayed();
-				//-----------------------------Reporter
-		 		UtilityObject.fReportpass("Create Lead", "Create Contract page is open successfully", logger, driver);
-				//------------------------------------
-		 	}
-		 	
-		 	catch(Exception e)
-		 	{
-		 		//-----------------------------Reporter
-		 		UtilityObject.fReportfail("Create Lead", "Error :" + e +" Create Contract page is not open successfully", logger, driver, Extndreport);
-				//------------------------------------
-		 	}
+			 	try
+			 	{
+			 		driver.findElement(CreateContractPOM.CustomerName()).isDisplayed();
+					//-----------------------------Reporter
+			 		UtilityObject.fReportpass("Create Lead", "Create Contract page is open successfully", logger, driver);
+					//------------------------------------
+			 	}
+			 	catch(Exception e)
+			 	{
+			 		//-----------------------------Reporter
+			 		UtilityObject.fReportfail("Create Lead", "Error :" + e +" Create Contract page is not open successfully", logger, driver, Extndreport);
+					//------------------------------------
+			 	}
 	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys("Amazon");
 	        driver.findElement(CreateContractPOM.CustomerSigned()).sendKeys("ABC Company");
 	        driver.findElement(CreateContractPOM.CustomerTitle()).sendKeys("NewContract");
@@ -59,16 +58,15 @@ public class SaleForce_Contracts {
 			driver.findElement(CreateContractPOM.CustomerDate()).sendKeys(df.format(dateobj));
 			Select priceBook = new Select(driver.findElement(CreateContractPOM.PriceBook()));
 			priceBook.selectByVisibleText("Standard");
-			driver.findElement(CreateContractPOM.ContractMonth()).sendKeys("12");
-			Select OwnerExpiration = new Select(driver.findElement(CreateContractPOM.OwnerExpirationNotice()));
-			OwnerExpiration.selectByValue("120 Days");
-			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys("Chris Carpenter");
 			driver.findElement(CreateContractPOM.ContractDate()).sendKeys(df.format(dateobj));
-			//-------------------------Billing Address----------------------------------------//
-			driver.findElement(CreateContractPOM.BillingStreet()).sendKeys("Uslapur");
-			driver.findElement(CreateContractPOM.BillingState()).sendKeys("Chhattisgarh");
-			driver.findElement(CreateContractPOM.BillingCountry()).sendKeys("India");
-			driver.findElement(CreateContractPOM.BillingDescription()).sendKeys("This is contract");
+			driver.findElement(CreateContractPOM.ContractMonth()).sendKeys("12");
+			Thread.sleep(3000);
+			Select OwnerExpiration = new Select(driver.findElement(CreateContractPOM.OwnerExpirationNotice()));
+			OwnerExpiration.selectByVisibleText("120 Days");
+			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys("Chris Carpenter");
+			
+			driver.findElement(CreateContractPOM.DescriptionArea()).sendKeys("This is contract");
+			//-------------------------Billing Address----------------------------------------/
 			driver.findElement(CreateContractPOM.SaveButton()).click();
 	}
 
