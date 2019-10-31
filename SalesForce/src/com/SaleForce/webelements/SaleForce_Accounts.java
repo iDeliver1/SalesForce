@@ -56,6 +56,15 @@ public class SaleForce_Accounts {
 			driver.findElement(CreateAccountPOM.Account_Description()).sendKeys("Create Account Name");
 			driver.findElement(CreateAccountPOM.Account_Save()).click();
 		 	
+			String Account_Created = driver.findElement(CreateAccountPOM.AccountVerification()).getText();
+			if(Account_Created.contains("SalesForce"))
+			{
+				UtilityObject.fReportpass("Account create", "Account is created successfully", logger, driver);
+			}
+				
+		
+			
+		
 	}
 
 }
