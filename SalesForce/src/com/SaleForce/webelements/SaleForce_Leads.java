@@ -31,6 +31,8 @@ public class SaleForce_Leads {
 			driver.findElement(CreateLeadPOM.LeadTab()).click();
 				try
 				{
+					WebDriverWait wait = new WebDriverWait(driver,6);
+					wait.until(ExpectedConditions.presenceOfElementLocated(CreateLeadPOM.Close()));
 					//Close the popup window
 					driver.findElement(CreateLeadPOM.Close()).click();
 				}

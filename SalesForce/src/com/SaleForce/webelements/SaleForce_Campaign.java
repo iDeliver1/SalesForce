@@ -1,6 +1,9 @@
 package com.SaleForce.webelements;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.SaleForce.POM.CreateCampaign;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -32,6 +35,8 @@ public class SaleForce_Campaign {
 			driver.findElement(CreateCampaignPOM.Tab()).click();
 				try
 				{
+					WebDriverWait wait = new WebDriverWait(driver,6);
+					wait.until(ExpectedConditions.presenceOfElementLocated(CreateCampaignPOM.Tab()));
 					//Close the popup window
 					driver.findElement(CreateCampaignPOM.Close()).click();
 				}
@@ -56,6 +61,8 @@ public class SaleForce_Campaign {
 			driver.findElement(CreateCampaignPOM.Expected_rev()).sendKeys(Expected_rev);
 			driver.findElement(CreateCampaignPOM.Budget_cost()).sendKeys(Budget_cost);
 			driver.findElement(CreateCampaignPOM.Save()).click();
+			WebDriverWait wait = new WebDriverWait(driver,6);
+			wait.until(ExpectedConditions.presenceOfElementLocated(CreateCampaignPOM.HeadName()));
 			String CampaignName = driver.findElement(CreateCampaignPOM.HeadName()).getText();
 				if(CampaignName.contains(Name))
 				{
