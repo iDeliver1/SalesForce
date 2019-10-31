@@ -19,6 +19,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class T_Campaign {
 
+	
 	WebDriver driver;						
 	ExtentTest logger;						
 	ExtentReports Extndreport;  			
