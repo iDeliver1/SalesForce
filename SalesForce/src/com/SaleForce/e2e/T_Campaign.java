@@ -96,6 +96,16 @@ public class T_Campaign {
 			objCampaignClass.Create_Campaign(Name, Expected_rev, Budget_cost, "day");	
 		}
 	
+	@Test(priority=4,enabled=true)
+	public void Close()
+		{
+			//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+			
+			driver.close();
+		}
+	
 	@AfterMethod	
 	public void Flush(ITestResult result) throws Throwable		
 	    {
