@@ -77,7 +77,7 @@ public class T_Leads {
 	@Test(priority=3,enabled=true)
 	public void Lead_Create() throws Throwable
 		{	
-		 	//----------------------------------------------Start report test-------------------------------------------------
+			//----------------------------------------------Start report test-------------------------------------------------
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
 			
@@ -86,6 +86,7 @@ public class T_Leads {
 			String LName 	    = Excel_Libraries.fRead("Lname", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
 			String CompanyName  = Excel_Libraries.fRead("CompanyName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
 			String Status 	    = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String Campaign     = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
 			
 			String[] Leads = {FName, LName, CompanyName, Status};
 			Utility_Libraries.fVerifyvalue(Leads,logger);
@@ -93,10 +94,11 @@ public class T_Leads {
 			LName 		    = Leads[1];
 			CompanyName 	= Leads[2];
 			Status 	        = Leads[3];
+			Campaign 		= Leads[4];
 			//--------------------------------------------------------------------------------
 			
 			SaleForce_Leads objLeadClass = new SaleForce_Leads(logger, driver, Extndreport);
-			objLeadClass.Create_Leads(FName, LName, CompanyName, Status);
+			objLeadClass.Create_Leads(FName, LName, CompanyName, Status, Campaign);
 		}
 	
 	@Test(priority=4,enabled=true)

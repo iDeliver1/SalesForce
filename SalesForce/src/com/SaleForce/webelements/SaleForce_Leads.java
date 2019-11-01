@@ -24,7 +24,7 @@ public class SaleForce_Leads {
 		this.Extndreport = Extndreport;
 	}
 
-	public void Create_Leads(String FName, String LName, String CompanyName, String Status) throws Throwable
+	public void Create_Leads(String FName, String LName, String CompanyName, String Status, String Campaign) throws Throwable
 	{
 		try
 		{
@@ -53,6 +53,7 @@ public class SaleForce_Leads {
 				}
 			driver.findElement(CreateLeadPOM.FName()).sendKeys(FName);
 			driver.findElement(CreateLeadPOM.LName()).sendKeys(LName);
+			driver.findElement(CreateLeadPOM.LName()).sendKeys(Campaign);
 			driver.findElement(CreateLeadPOM.CompanyName()).sendKeys(CompanyName);
 			Select Status_ = new Select( driver.findElement(CreateLeadPOM.Status()));
 			Status_.selectByValue(Status);

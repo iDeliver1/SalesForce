@@ -2,6 +2,7 @@ package com.SaleForce.webelements;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.SaleForce.POM.CreateCampaign;
@@ -24,7 +25,7 @@ public class SaleForce_Campaign {
 		this.Extndreport = Extndreport;
 	}
 	
-	public void Create_Campaign(String Name, String Expected_rev, String Budget_cost, String Condition) throws Throwable
+	public void Create_Campaign(String Name, String Expected_rev, String Budget_cost, String Condition, String Status_) throws Throwable
 	{
 		
 		String CurrentDate = Utility_Object.fGetCurrentDate();
@@ -56,6 +57,8 @@ public class SaleForce_Campaign {
 					//------------------------------------
 				}
 			driver.findElement(CreateCampaignPOM.Name()).sendKeys(Name);
+			Select Status = new Select(driver.findElement(CreateCampaignPOM.Status()));
+			Status.selectByValue(Status_);
 			driver.findElement(CreateCampaignPOM.S_Date()).sendKeys(CurrentDate);
 			driver.findElement(CreateCampaignPOM.E_Date()).sendKeys(AddDate);
 			driver.findElement(CreateCampaignPOM.Expected_rev()).sendKeys(Expected_rev);
