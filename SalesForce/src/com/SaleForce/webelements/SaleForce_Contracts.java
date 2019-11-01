@@ -1,8 +1,5 @@
 package com.SaleForce.webelements;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import com.SaleForce.POM.CreateContract;
@@ -27,6 +24,7 @@ public class SaleForce_Contracts {
 	
 	public void Create_Contracts() throws Throwable
 	{
+			String CurrentDate = UtilityObject.fGetCurrentDate();
 			driver.findElement(CreateContractPOM.ContractTab()).click();
 			Thread.sleep(3000);
 			try
@@ -41,24 +39,22 @@ public class SaleForce_Contracts {
 			 	{
 			 		driver.findElement(CreateContractPOM.CustomerName()).isDisplayed();
 					//-----------------------------Reporter
-			 		UtilityObject.fReportpass("Create Lead", "Create Contract page is open successfully", logger, driver);
+			 		UtilityObject.fReportpass("Create Contract", "Create Contract page is open successfully", logger, driver);
 					//------------------------------------
 			 	}
 			 	catch(Exception e)
 			 	{
 			 		//-----------------------------Reporter
-			 		UtilityObject.fReportfail("Create Lead", "Error :" + e +" Create Contract page is not open successfully", logger, driver, Extndreport);
+			 		UtilityObject.fReportfail("Create Contract", "Error :" + e +" Create Contract page is not open successfully", logger, driver, Extndreport);
 					//------------------------------------
 			 	}
 	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys("Amazon");
 	        driver.findElement(CreateContractPOM.CustomerSigned()).sendKeys("ABC Company");
 	        driver.findElement(CreateContractPOM.CustomerTitle()).sendKeys("NewContract");
-	        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-	        Date dateobj = new Date();
-			driver.findElement(CreateContractPOM.CustomerDate()).sendKeys(df.format(dateobj));
+			driver.findElement(CreateContractPOM.CustomerDate()).sendKeys(CurrentDate);
 			Select priceBook = new Select(driver.findElement(CreateContractPOM.PriceBook()));
 			priceBook.selectByVisibleText("Standard");
-			driver.findElement(CreateContractPOM.ContractDate()).sendKeys(df.format(dateobj));
+			driver.findElement(CreateContractPOM.ContractDate()).sendKeys(CurrentDate);
 			driver.findElement(CreateContractPOM.ContractMonth()).sendKeys("12");
 			Thread.sleep(3000);
 			Select OwnerExpiration = new Select(driver.findElement(CreateContractPOM.OwnerExpirationNotice()));
