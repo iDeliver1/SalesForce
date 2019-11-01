@@ -88,7 +88,7 @@ public class T_CreateLead_and_Camoaign {
 			String Budget_cost  = Excel_Libraries.fRead("Budget_cost", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
 			String Status_ 	    = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
 			
-			String[] Campaign = {Name, Expected_rev, Budget_cost};
+			String[] Campaign = {Name, Expected_rev, Budget_cost, Status_};
 			Utility_Libraries.fVerifyvalue(Campaign,logger);
 			Name 			= Campaign[0];
 			Expected_rev    = Campaign[1];
@@ -114,7 +114,7 @@ public class T_CreateLead_and_Camoaign {
 			String Status 	    = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
 			String Campaign     = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
 			
-			String[] Leads = {FName, LName, CompanyName, Status};
+			String[] Leads = {FName, LName, CompanyName, Status, Campaign};
 			Utility_Libraries.fVerifyvalue(Leads,logger);
 			FName 			= Leads[0];
 			LName 		    = Leads[1];

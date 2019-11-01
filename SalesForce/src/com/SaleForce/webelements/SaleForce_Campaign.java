@@ -36,8 +36,9 @@ public class SaleForce_Campaign {
 			driver.findElement(CreateCampaignPOM.Tab()).click();
 				try
 				{
+					driver.switchTo().frame(0);
 					WebDriverWait wait = new WebDriverWait(driver,6);
-					wait.until(ExpectedConditions.presenceOfElementLocated(CreateCampaignPOM.Tab()));
+					wait.until(ExpectedConditions.presenceOfElementLocated(CreateCampaignPOM.Close()));
 					//Close the popup window
 					driver.findElement(CreateCampaignPOM.Close()).click();
 				}
