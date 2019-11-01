@@ -42,6 +42,10 @@ public class T_Contracts {
 			    //----------------------------------------------Start report test-------------------------------------------------
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
+				String [] Launch = {Browser,Url};
+				Utility_Libraries.fVerifyvalue(Launch, logger);
+				Browser = Launch[0];
+				Url = Launch[1];
 					
 				driver = Utility_Libraries.fgetBrowser(Browser, driver);					 
 				driver.navigate().to(Url);	
