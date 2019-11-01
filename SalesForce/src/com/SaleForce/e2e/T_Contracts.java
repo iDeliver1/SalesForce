@@ -60,6 +60,11 @@ public class T_Contracts {
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
 				
+				String [] Login = {Username,Password};
+				Utility_Libraries.fVerifyvalue(Login, logger);
+				Username 	= Login[0];
+				Password 	= Login[1];
+				
 				//--------------------------------------------------------------------------------			
 				SaleForce_Login objLoginClass =  new SaleForce_Login(logger, driver, Extndreport);						
 				objLoginClass.Login(Username,Password);							
