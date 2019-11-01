@@ -64,7 +64,6 @@ public class SaleForce_Contracts {
 			Select OwnerExpiration = new Select(driver.findElement(CreateContractPOM.OwnerExpirationNotice()));
 			OwnerExpiration.selectByVisibleText("120 Days");
 			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys("Chris Carpenter");
-			
 			driver.findElement(CreateContractPOM.DescriptionArea()).sendKeys("This is contract");
 			//-------------------------Billing Address----------------------------------------/
 			driver.findElement(CreateContractPOM.SaveButton()).click();

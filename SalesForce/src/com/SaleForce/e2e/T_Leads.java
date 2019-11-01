@@ -114,7 +114,7 @@ public class T_Leads {
 	
 	@AfterMethod	
 	public void Flush(ITestResult result) throws Throwable		
-		{
+		{ 
 				if(result.getStatus()==ITestResult.FAILURE) 
 				{ 			
 					logger.log(LogStatus.FAIL,"Error :"+result.getThrowable());//+report.getClass()+" Test "+logger.getTest().statusMessage);//,ClassTest.takeScreenShot());			

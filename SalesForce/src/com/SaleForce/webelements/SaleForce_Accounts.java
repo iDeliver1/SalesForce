@@ -1,6 +1,8 @@
 package com.SaleForce.webelements;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.SaleForce.POM.CreateAccounts;
 import com.SaleForce.POM.CreateContract;
@@ -27,15 +29,21 @@ public class SaleForce_Accounts {
 	
 	public void Create_Accounts() throws Throwable
 	{
+			WebDriverWait wait = new WebDriverWait(driver,30);
+			
 			driver.findElement(CreateAccountPOM.AccoutTab()).click();
-			Thread.sleep(3000);
+			 
+			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateContractPOM.PopUpWindow()));
+			
 			try
 			{
 				//Close the popup window
 				driver.findElement(CreateContractPOM.PopUpWindow()).click();
 			}
 			catch(Exception f) {}
+			
 			Thread.sleep(3000);
+			
 		 	driver.findElement(CreateAccountPOM.New()).click();
 			try
 			{
@@ -55,7 +63,20 @@ public class SaleForce_Accounts {
 			driver.findElement(CreateAccountPOM.AccountNumber()).sendKeys("1234567890");
 			driver.findElement(CreateAccountPOM.Account_Description()).sendKeys("Create Account Name");
 			driver.findElement(CreateAccountPOM.Account_Save()).click();
-		 	
+			
+			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateAccountPOM.AccountVerification()));
+		
+			String Account_Created = driver.findElement(CreateAccountPOM.AccountVerification()).getText();
+			if(Account_Created.contains("SalesForce"))
+			{
+				UtilityObject.fReportpass("Account create", "Account is created successfully", logger, driver);
+			}
+			
+			else 
+			{
+				UtilityObject.fReportfail("Account create", "Account is not created successfully", logger, driver, Extndreport);
+			}	
+		
 	}
 
 }

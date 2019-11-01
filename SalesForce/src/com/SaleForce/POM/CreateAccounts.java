@@ -42,5 +42,11 @@ public class CreateAccounts {
 		By Source = By.xpath(Utility_Libraries.fGetElement("Account_Save", "Account"));
 		return Source;
 	}
+	
+	public By AccountVerification() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("AccountVerification", "Account"));
+		return Source;
+	}
 
 }
