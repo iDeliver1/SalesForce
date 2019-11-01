@@ -1,15 +1,22 @@
 package com.SaleForce.e2e;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
 import com.SaleForce.libraries.Excel_Libraries;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.SaleForce.webelements.SaleForce_Contracts;
 import com.SaleForce.webelements.SaleForce_Login;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class T_Contracts {
 	
@@ -60,6 +67,38 @@ public class T_Contracts {
 			SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
 			objContractClass.Create_Contracts();
 		}
+		
+		@Test(priority=4,enabled=true)
+		public void Close()
+			{
+				//----------------------------------------------Start report test-------------------------------------------------
+				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+				logger 		= Extndreport.startTest(testName);
+				
+				driver.close();
+			}
+		
+		@AfterMethod	
+		public void Flush(ITestResult result) throws Throwable		
+		    {
+				if(result.getStatus()==ITestResult.FAILURE) 
+				{ 			
+					logger.log(LogStatus.FAIL,"Error :"+result.getThrowable());//+report.getClass()+" Test "+logger.getTest().statusMessage);//,ClassTest.takeScreenShot());			
+				}		
+				  if (result.getStatus() == ITestResult.FAILURE) {
+			            logger.log(LogStatus.FAIL, "Test '"+ testName+ "' Failed : Cause>>"+result.getThrowable(),logger.addScreenCapture(Utility_Libraries.fScreenReport(driver)));
+			            Excel_Libraries.fExcelReporter( ""+result.getThrowable()+"" , "Condition must be fullfill", "FAIL",""+new SimpleDateFormat("MM_dd_y_hhmmssa").format(new Date()));
+			            Extndreport.endTest(logger);
+			            Extndreport.flush();
+			            System.exit(1);
+				  	} else if (result.getStatus() == ITestResult.SKIP) {
+			        	logger.log(LogStatus.SKIP, "Test '"+ testName+ "' skipped : Cause>>"+ result.getThrowable(),logger.addScreenCapture(Utility_Libraries.fScreenReport(driver)));
+			        } else {
+			        	logger.log(LogStatus.PASS, "Test  '"+ testName+"'  passed");
+			        }	  
+				  Extndreport.endTest(logger);
+				  Extndreport.flush();
+		    }
 		
 		
 }
