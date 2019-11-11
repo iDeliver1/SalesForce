@@ -46,7 +46,7 @@ public class T_Contracts {
 				Utility_Libraries.fVerifyvalue(Launch, logger);
 				Browser = Launch[0];
 				Url = Launch[1];
-					
+				
 				driver = Utility_Libraries.fgetBrowser(Browser, driver);					 
 				driver.navigate().to(Url);	
 				driver.manage().window().maximize();
