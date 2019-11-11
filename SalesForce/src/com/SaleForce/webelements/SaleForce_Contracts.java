@@ -49,7 +49,6 @@ public class SaleForce_Contracts {
 					//------------------------------------
 			 	}
 	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys("SalesForce");
-	        driver.findElement(CreateContractPOM.CustomerSigned()).sendKeys("ABC Company");
 	        driver.findElement(CreateContractPOM.CustomerTitle()).sendKeys("NewContract");
 			driver.findElement(CreateContractPOM.CustomerDate()).sendKeys(CurrentDate);
 			Select priceBook = new Select(driver.findElement(CreateContractPOM.PriceBook()));
@@ -59,7 +58,7 @@ public class SaleForce_Contracts {
 			Thread.sleep(3000);
 			Select OwnerExpiration = new Select(driver.findElement(CreateContractPOM.OwnerExpirationNotice()));
 			OwnerExpiration.selectByVisibleText("120 Days");
-			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys("Chris Carpenter");
+			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys("Tiara Yount");
 			driver.findElement(CreateContractPOM.DescriptionArea()).sendKeys("This is contract");
 			//-------------------------Billing Address----------------------------------------/
 			Thread.sleep(5000);
