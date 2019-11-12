@@ -48,6 +48,7 @@ public class SaleForce_Contracts {
 			 		UtilityObject.fReportfail("Create Contract", "Error :" + e +" Create Contract page is not open successfully", logger, driver, Extndreport);
 					//------------------------------------
 			 	}
+			 	
 	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys("Amazon");
 	        driver.findElement(CreateContractPOM.CustomerSigned()).sendKeys("ABC Company");
 	        driver.findElement(CreateContractPOM.CustomerTitle()).sendKeys("NewContract");
