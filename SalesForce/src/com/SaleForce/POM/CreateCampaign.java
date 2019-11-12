@@ -24,6 +24,12 @@ public class CreateCampaign {
 		return Source;
 	}
 	
+	public By Status() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Status", "Campaign"));
+		return Source;
+	}
+	
 	public By S_Date() throws Throwable
 	{
 		By Source = By.xpath(Utility_Libraries.fGetElement("S_Date", "Campaign"));

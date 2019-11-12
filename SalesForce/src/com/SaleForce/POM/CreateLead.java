@@ -24,6 +24,12 @@ public class CreateLead {
 		return Source;
 	}
 	
+	public By Campaign() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Campaign", "Leads"));
+		return Source;
+	}
+	
 	public By LName() throws Throwable
 	{
 		By Source = By.xpath(Utility_Libraries.fGetElement("LName", "Leads"));

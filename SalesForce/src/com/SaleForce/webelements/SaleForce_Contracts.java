@@ -49,6 +49,7 @@ public class SaleForce_Contracts {
 					//------------------------------------
 			 	}
 	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys("Amazon");
+	        driver.findElement(CreateContractPOM.CustomerSigned()).sendKeys("ABC Company");
 	        driver.findElement(CreateContractPOM.CustomerTitle()).sendKeys("NewContract");
 			driver.findElement(CreateContractPOM.CustomerDate()).sendKeys(CurrentDate);
 			Select priceBook = new Select(driver.findElement(CreateContractPOM.PriceBook()));
