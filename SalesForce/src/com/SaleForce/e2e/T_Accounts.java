@@ -2,12 +2,14 @@ package com.SaleForce.e2e;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
 import com.SaleForce.libraries.Excel_Libraries;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.SaleForce.webelements.SaleForce_Accounts;
@@ -70,8 +72,23 @@ public class T_Accounts {
 		@Test(priority=3)
 		public void Account_Create() throws Throwable
 		{	
+			//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+			
+			//---------------------------------Variables--------------------------------------
+			String AccountName 	    = Excel_Libraries.fRead("AccountName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			String AccountNumber 	    = Excel_Libraries.fRead("AccountNumber", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			String AccountDescription 	    = Excel_Libraries.fRead("AccountDescription", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			
+			String[] Account = {AccountName, AccountNumber, AccountDescription};
+			Utility_Libraries.fVerifyvalue(Account,logger);
+			AccountName 			= Account[0];
+			AccountNumber 		    = Account[1];
+			AccountDescription      = Account[2];
+			
 			SaleForce_Accounts objAccountClass = new SaleForce_Accounts(logger, driver, Extndreport);
-			objAccountClass.Create_Accounts();
+			objAccountClass.Create_Accounts(AccountName,AccountNumber,AccountDescription);
 		}
 		
 		@Test(priority=4,enabled=true)

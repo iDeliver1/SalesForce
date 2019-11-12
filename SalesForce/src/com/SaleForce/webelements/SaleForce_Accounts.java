@@ -27,7 +27,7 @@ public class SaleForce_Accounts {
 		this.Extndreport = Extndreport;
 	}
 	
-	public void Create_Accounts() throws Throwable
+	public void Create_Accounts(String AccountName,String AccountNumber,String AccountDescription) throws Throwable
 	{
 			WebDriverWait wait = new WebDriverWait(driver,30);
 			
@@ -59,15 +59,15 @@ public class SaleForce_Accounts {
 				//------------------------------------
 			}
 			
-			driver.findElement(CreateAccountPOM.AccountName()).sendKeys("SalesForce");
-			driver.findElement(CreateAccountPOM.AccountNumber()).sendKeys("1234567890");
-			driver.findElement(CreateAccountPOM.Account_Description()).sendKeys("Create Account Name");
+			driver.findElement(CreateAccountPOM.AccountName()).sendKeys(AccountName);
+			driver.findElement(CreateAccountPOM.AccountNumber()).sendKeys(AccountNumber);
+			driver.findElement(CreateAccountPOM.Account_Description()).sendKeys(AccountDescription);
 			driver.findElement(CreateAccountPOM.Account_Save()).click();
 			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateAccountPOM.AccountVerification()));
 		
 			String Account_Created = driver.findElement(CreateAccountPOM.AccountVerification()).getText();
-			if(Account_Created.contains("SalesForce"))
+			if(Account_Created.contains(AccountName))
 			{
 				UtilityObject.fReportpass("Account create", "Account is created successfully", logger, driver);
 			}

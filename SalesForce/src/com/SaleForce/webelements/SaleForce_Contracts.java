@@ -22,7 +22,7 @@ public class SaleForce_Contracts {
 		this.Extndreport = Extndreport;
 	}
 	
-	public void Create_Contracts() throws Throwable
+	public void Create_Contracts(String CustomerName,String CustomerTitle,String PriceBook,String ContractMonth,String OwnerExpiration,String CompanySigned,String DescriptionArea) throws Throwable
 	{
 			String CurrentDate = UtilityObject.fGetCurrentDate();
 			driver.findElement(CreateContractPOM.ContractTab()).click();
@@ -33,7 +33,7 @@ public class SaleForce_Contracts {
 				driver.findElement(CreateContractPOM.PopUpWindow()).click();
 			}
 			catch(Exception f) {}
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		 	driver.findElement(CreateContractPOM.NewLink()).click();
 			 	try
 			 	{
@@ -49,22 +49,36 @@ public class SaleForce_Contracts {
 					//------------------------------------
 			 	}
 			 	
-	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys("Amazon");
-	        driver.findElement(CreateContractPOM.CustomerSigned()).sendKeys("ABC Company");
-	        driver.findElement(CreateContractPOM.CustomerTitle()).sendKeys("NewContract");
+	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys(CustomerName);
+	        driver.findElement(CreateContractPOM.CustomerTitle()).sendKeys(CustomerTitle);
 			driver.findElement(CreateContractPOM.CustomerDate()).sendKeys(CurrentDate);
 			Select priceBook = new Select(driver.findElement(CreateContractPOM.PriceBook()));
-			priceBook.selectByVisibleText("Standard");
+			priceBook.selectByVisibleText(PriceBook);
 			driver.findElement(CreateContractPOM.ContractDate()).sendKeys(CurrentDate);
-			driver.findElement(CreateContractPOM.ContractMonth()).sendKeys("12");
-			Thread.sleep(3000);
-			Select OwnerExpiration = new Select(driver.findElement(CreateContractPOM.OwnerExpirationNotice()));
-			OwnerExpiration.selectByVisibleText("120 Days");
-			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys("Candyce Webber");
-			driver.findElement(CreateContractPOM.DescriptionArea()).sendKeys("This is contract");
+			driver.findElement(CreateContractPOM.ContractMonth()).sendKeys(ContractMonth);
+			Select OwnerExpirationNotice = new Select(driver.findElement(CreateContractPOM.OwnerExpirationNotice()));
+			OwnerExpirationNotice.selectByVisibleText(OwnerExpiration);
+			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys(CompanySigned);
+			driver.findElement(CreateContractPOM.DescriptionArea()).sendKeys(DescriptionArea);
 			//-------------------------Billing Address----------------------------------------/
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 			driver.findElement(CreateContractPOM.SaveButton()).click();
+			
+			//----------------------Verification Contract is Created-------------------------/
+			
+			String ContractNumber =  driver.findElement(CreateContractPOM.PageDescription()).getText();
+			if(ContractNumber!="")
+			{
+				//-----------------------------Reporter
+				UtilityObject.fReportpass("Contract create", "Contract is successfully created", logger, driver);
+				//------------------------------------
+			}
+			else
+			{
+				//-----------------------------Reporter
+				UtilityObject.fReportfail("Contract create", "Contract is not successfully created", logger, driver, Extndreport);
+				//------------------------------------
+			}
 	}
 
 }

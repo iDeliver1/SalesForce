@@ -90,4 +90,10 @@ public class CreateContract {
 		return Source;
 	}
 	
+	public By PageDescription() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("PageDescription", "Contracts"));
+		return Source;
+	}
+	
 }
