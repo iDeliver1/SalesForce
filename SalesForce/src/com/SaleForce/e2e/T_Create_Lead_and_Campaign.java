@@ -88,16 +88,16 @@ public class T_Create_Lead_and_Campaign {
 			String Budget_cost  = Excel_Libraries.fRead("Budget_cost", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
 			String Status_ 	    = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
 			
-			String[] Campaign = {Name, Expected_rev, Budget_cost, Status_};
+			String[] Campaign = {Name, Expected_rev, Budget_cost};
 			Utility_Libraries.fVerifyvalue(Campaign,logger);
 			Name 			= Campaign[0];
 			Expected_rev    = Campaign[1];
 			Budget_cost 	= Campaign[2];
-			Status_         = Campaign[3];
 			//--------------------------------------------------------------------------------
 			
 			SaleForce_Campaign objCampaignClass = new SaleForce_Campaign(logger, driver, Extndreport);
 			objCampaignClass.Create_Campaign(Name, Expected_rev, Budget_cost, "day", Status_);	
+		
 		}
 	
 	@Test(priority=4,enabled=true)
