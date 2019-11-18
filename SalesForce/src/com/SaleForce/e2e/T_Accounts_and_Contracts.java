@@ -2,14 +2,12 @@ package com.SaleForce.e2e;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.SaleForce.libraries.Excel_Libraries;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.SaleForce.webelements.SaleForce_Accounts;
@@ -79,55 +77,55 @@ public class T_Accounts_and_Contracts {
 	
 	@Test(priority=3,enabled=true)
 	public void Account_Create() throws Throwable
-	{	
-		//----------------------------------------------Start report test-------------------------------------------------
-		testName	= new Object(){}.getClass().getEnclosingMethod().getName();
-		logger 		= Extndreport.startTest(testName);
-		
-		//---------------------------------Variables--------------------------------------
-		String AccountName 	    = Excel_Libraries.fRead("AccountName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
-		String AccountNumber 	= Excel_Libraries.fRead("AccountNumber", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
-		String AccountDescription = Excel_Libraries.fRead("AccountDescription", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
-		
-		String[] Account = {AccountName, AccountNumber, AccountDescription};
-		Utility_Libraries.fVerifyvalue(Account,logger);
-		AccountName 			= Account[0];
-		AccountNumber 		    = Account[1];
-		AccountDescription      = Account[2];
-		
-		//--------------------------------------------------------------------------------
-		SaleForce_Accounts objAccountClass = new SaleForce_Accounts(logger, driver, Extndreport);
-		objAccountClass.Create_Accounts(AccountName,AccountNumber,AccountDescription);
-	}
+		{	
+			//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+			
+			//---------------------------------Variables--------------------------------------
+			String AccountName 	    = Excel_Libraries.fRead("AccountName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			String AccountNumber 	= Excel_Libraries.fRead("AccountNumber", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			String AccountDescription = Excel_Libraries.fRead("AccountDescription", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			
+			String[] Account = {AccountName, AccountNumber, AccountDescription};
+			Utility_Libraries.fVerifyvalue(Account,logger);
+			AccountName 			= Account[0];
+			AccountNumber 		    = Account[1];
+			AccountDescription      = Account[2];
+			
+			//--------------------------------------------------------------------------------
+			SaleForce_Accounts objAccountClass = new SaleForce_Accounts(logger, driver, Extndreport);
+			objAccountClass.Create_Accounts(AccountName,AccountNumber,AccountDescription);
+		}
 	
 	@Test(priority=4,enabled=true)
 	public void Contract_Create() throws Throwable
-	{	
-		//----------------------------------------------Start report test-------------------------------------------------
-		testName	= new Object(){}.getClass().getEnclosingMethod().getName();
-		logger 		= Extndreport.startTest(testName);
-		
-		//---------------------------------Variables--------------------------------------
-		String CustomerName 	    = Excel_Libraries.fRead("CustomerName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
-		String CustomerTitle 	    = Excel_Libraries.fRead("CustomerTitle", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
-		String PriceBook            = Excel_Libraries.fRead("PriceBook", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
-		String ContractMonth 	    = Excel_Libraries.fRead("ContractMonth", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
-		String OwnerExpiration      = Excel_Libraries.fRead("OwnerExpiration", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
-		String CompanySigned        = Excel_Libraries.fRead("CompanySigned", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
-		String DescriptionArea      = Excel_Libraries.fRead("DescriptionArea", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
-		
-		String[] Contracts = {CustomerName, CustomerTitle, PriceBook, ContractMonth, OwnerExpiration,CompanySigned,DescriptionArea};
-		Utility_Libraries.fVerifyvalue(Contracts,logger);
-		CustomerName 			= Contracts[0];
-		CustomerTitle 		    = Contracts[1];
-		PriceBook            	= Contracts[2];
-		ContractMonth 	        = Contracts[3];
-		OwnerExpiration 		= Contracts[4];
-		CompanySigned 			= Contracts[5];
-		DescriptionArea 		= Contracts[6];
-		
-		SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
-		objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,CompanySigned,DescriptionArea);
+		{	
+			//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+			
+			//---------------------------------Variables--------------------------------------
+			String CustomerName 	    = Excel_Libraries.fRead("CustomerName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+			String CustomerTitle 	    = Excel_Libraries.fRead("CustomerTitle", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+			String PriceBook            = Excel_Libraries.fRead("PriceBook", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+			String ContractMonth 	    = Excel_Libraries.fRead("ContractMonth", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+			String OwnerExpiration      = Excel_Libraries.fRead("OwnerExpiration", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+			String CompanySigned        = Excel_Libraries.fRead("CompanySigned", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+			String DescriptionArea      = Excel_Libraries.fRead("DescriptionArea", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+			
+			String[] Contracts = {CustomerName, CustomerTitle, PriceBook, ContractMonth, OwnerExpiration,CompanySigned,DescriptionArea};
+			Utility_Libraries.fVerifyvalue(Contracts,logger);
+			CustomerName 			= Contracts[0];
+			CustomerTitle 		    = Contracts[1];
+			PriceBook            	= Contracts[2];
+			ContractMonth 	        = Contracts[3];
+			OwnerExpiration 		= Contracts[4];
+			CompanySigned 			= Contracts[5];
+			DescriptionArea 		= Contracts[6];
+			
+			SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
+			objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,CompanySigned,DescriptionArea);
 		}
 	
 	@Test(priority=5,enabled=true)
