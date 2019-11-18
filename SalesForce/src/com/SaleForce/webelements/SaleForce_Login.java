@@ -32,6 +32,9 @@ public class SaleForce_Login {
 			driver.findElement(LoginPOM.Username()).sendKeys(Username);
 			//Enter Password
 			driver.findElement(LoginPOM.Password()).sendKeys(Password);
+				//-----------------------------Reporter
+				Utility_Object.fReportpass("Username and Password", "Enter Username and Password details", logger, driver);
+				//------------------------------------
 			//Click Signin
 			driver.findElement(LoginPOM.Signin()).click();
 				try

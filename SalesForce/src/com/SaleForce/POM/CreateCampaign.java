@@ -68,7 +68,7 @@ public class CreateCampaign {
 	
 	public By Close() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Close", "Login"));
+		By Source = By.xpath(Utility_Libraries.fGetElement("Close", "Campaign"));
 		return Source;
 	}
 }
