@@ -57,7 +57,6 @@ public class T_Contracts {
 			 	//----------------------------------------------Start report test-------------------------------------------------
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
-				
 				String [] Login = {Username,Password};
 				Utility_Libraries.fVerifyvalue(Login, logger);
 				Username 	= Login[0];
@@ -93,7 +92,6 @@ public class T_Contracts {
 			OwnerExpiration 		= Contracts[4];
 			CompanySigned 			= Contracts[5];
 			DescriptionArea 		= Contracts[6];
-			
 			//-------------------------------------------------------------------------------------------
 			SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
 			objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,CompanySigned,DescriptionArea);
@@ -105,7 +103,6 @@ public class T_Contracts {
 				//----------------------------------------------Start report test-------------------------------------------------
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
-				
 				driver.close();
 			}
 		
