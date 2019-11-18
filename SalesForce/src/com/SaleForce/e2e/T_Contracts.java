@@ -2,14 +2,12 @@ package com.SaleForce.e2e;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.SaleForce.libraries.Excel_Libraries;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.SaleForce.webelements.SaleForce_Contracts;
@@ -46,7 +44,7 @@ public class T_Contracts {
 				Utility_Libraries.fVerifyvalue(Launch, logger);
 				Browser = Launch[0];
 				Url = Launch[1];
-				
+				//---------------------------------------------------------------------------------------------------------------
 				driver = Utility_Libraries.fgetBrowser(Browser, driver);					 
 				driver.navigate().to(Url);	
 				driver.manage().window().maximize();
@@ -59,7 +57,6 @@ public class T_Contracts {
 			 	//----------------------------------------------Start report test-------------------------------------------------
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
-				
 				String [] Login = {Username,Password};
 				Utility_Libraries.fVerifyvalue(Login, logger);
 				Username 	= Login[0];
@@ -72,10 +69,33 @@ public class T_Contracts {
 		
 		@Test(priority=3)
 		public void Contract_Create() throws Throwable
-		{	
-			SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
-			objContractClass.Create_Contracts();
-		}
+			{	
+				//----------------------------------------------Start report test-------------------------------------------------
+				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+				logger 		= Extndreport.startTest(testName);
+				
+				//---------------------------------Variables--------------------------------------
+				String CustomerName 	    = Excel_Libraries.fRead("CustomerName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+				String CustomerTitle 	    = Excel_Libraries.fRead("CustomerTitle", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+				String PriceBook            = Excel_Libraries.fRead("PriceBook", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+				String ContractMonth 	    = Excel_Libraries.fRead("ContractMonth", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+				String OwnerExpiration     	= Excel_Libraries.fRead("OwnerExpiration", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+				String CompanySigned        = Excel_Libraries.fRead("CompanySigned", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+				String DescriptionArea      = Excel_Libraries.fRead("DescriptionArea", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
+				
+				String[] Contracts = {CustomerName, CustomerTitle, PriceBook, ContractMonth, OwnerExpiration,CompanySigned,DescriptionArea};
+				Utility_Libraries.fVerifyvalue(Contracts,logger);
+				CustomerName 			= Contracts[0];
+				CustomerTitle 		    = Contracts[1];
+				PriceBook            	= Contracts[2];
+				ContractMonth 	        = Contracts[3];
+				OwnerExpiration 		= Contracts[4];
+				CompanySigned 			= Contracts[5];
+				DescriptionArea 		= Contracts[6];
+				//-------------------------------------------------------------------------------------------
+				SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
+				objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,CompanySigned,DescriptionArea);
+			}
 		
 		@Test(priority=4,enabled=true)
 		public void Close()
@@ -83,7 +103,6 @@ public class T_Contracts {
 				//----------------------------------------------Start report test-------------------------------------------------
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
-				
 				driver.close();
 			}
 		
@@ -107,7 +126,5 @@ public class T_Contracts {
 			        }	  
 				  Extndreport.endTest(logger);
 				  Extndreport.flush();
-		    }
-		
-		
+		    }		
 }

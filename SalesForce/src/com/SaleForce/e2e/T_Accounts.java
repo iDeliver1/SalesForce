@@ -39,12 +39,11 @@ public class T_Accounts {
 			    //----------------------------------------------Start report test-------------------------------------------------
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
-				
 				String [] Launch = {Browser,Url};
 				Utility_Libraries.fVerifyvalue(Launch, logger);
 				Browser = Launch[0];
 				Url = Launch[1];
-				  
+				 //-------------------------------------------------------------------------------------------------------------- 
 				driver = Utility_Libraries.fgetBrowser(Browser, driver);					 
 				driver.navigate().to(Url);	
 				driver.manage().window().maximize();
@@ -70,8 +69,22 @@ public class T_Accounts {
 		@Test(priority=3)
 		public void Account_Create() throws Throwable
 		{	
+			//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+			//---------------------------------Variables----------------------------------------------------------------------
+			String AccountName 	    = Excel_Libraries.fRead("AccountName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			String AccountNumber 	    = Excel_Libraries.fRead("AccountNumber", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			String AccountDescription 	    = Excel_Libraries.fRead("AccountDescription", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			
+			String[] Account = {AccountName, AccountNumber, AccountDescription};
+			Utility_Libraries.fVerifyvalue(Account,logger);
+			AccountName 			= Account[0];
+			AccountNumber 		    = Account[1];
+			AccountDescription      = Account[2];
+			//-----------------------------------------------------------------------------------------------------------------
 			SaleForce_Accounts objAccountClass = new SaleForce_Accounts(logger, driver, Extndreport);
-			objAccountClass.Create_Accounts();
+			objAccountClass.Create_Accounts(AccountName,AccountNumber,AccountDescription);
 		}
 		
 		@Test(priority=4,enabled=true)
@@ -80,7 +93,6 @@ public class T_Accounts {
 				//----------------------------------------------Start report test-------------------------------------------------
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
-				
 				driver.close();
 			}
 		
