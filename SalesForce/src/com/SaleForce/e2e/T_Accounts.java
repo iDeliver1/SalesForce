@@ -2,7 +2,6 @@ package com.SaleForce.e2e;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -40,12 +39,11 @@ public class T_Accounts {
 			    //----------------------------------------------Start report test-------------------------------------------------
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
-				
 				String [] Launch = {Browser,Url};
 				Utility_Libraries.fVerifyvalue(Launch, logger);
 				Browser = Launch[0];
 				Url = Launch[1];
-				  
+				 //-------------------------------------------------------------------------------------------------------------- 
 				driver = Utility_Libraries.fgetBrowser(Browser, driver);					 
 				driver.navigate().to(Url);	
 				driver.manage().window().maximize();
@@ -74,8 +72,7 @@ public class T_Accounts {
 			//----------------------------------------------Start report test-------------------------------------------------
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
-			
-			//---------------------------------Variables--------------------------------------
+			//---------------------------------Variables----------------------------------------------------------------------
 			String AccountName 	    = Excel_Libraries.fRead("AccountName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
 			String AccountNumber 	    = Excel_Libraries.fRead("AccountNumber", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
 			String AccountDescription 	    = Excel_Libraries.fRead("AccountDescription", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
@@ -85,7 +82,7 @@ public class T_Accounts {
 			AccountName 			= Account[0];
 			AccountNumber 		    = Account[1];
 			AccountDescription      = Account[2];
-			
+			//-----------------------------------------------------------------------------------------------------------------
 			SaleForce_Accounts objAccountClass = new SaleForce_Accounts(logger, driver, Extndreport);
 			objAccountClass.Create_Accounts(AccountName,AccountNumber,AccountDescription);
 		}
@@ -96,7 +93,6 @@ public class T_Accounts {
 				//----------------------------------------------Start report test-------------------------------------------------
 				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 				logger 		= Extndreport.startTest(testName);
-				
 				driver.close();
 			}
 		
