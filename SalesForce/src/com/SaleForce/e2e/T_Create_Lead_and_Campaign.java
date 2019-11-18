@@ -19,7 +19,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class T_CreateLead_and_Campaign {
+public class T_Create_Lead_and_Campaign {
 
 	WebDriver driver;						
 	ExtentTest logger;						
