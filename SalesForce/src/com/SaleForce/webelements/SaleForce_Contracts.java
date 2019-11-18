@@ -67,18 +67,15 @@ public class SaleForce_Contracts {
 			//----------------------Verification Contract is Created-------------------------/
 			
 			String ContractNumber =  driver.findElement(CreateContractPOM.PageDescription()).getText();
-			if(ContractNumber!="")
-			{
-				//-----------------------------Reporter
+				if(ContractNumber!=""){
+			    //-----------------------------Reporter------------------------------------------/
 				UtilityObject.fReportpass("Contract create", "Contract is successfully created", logger, driver);
-				//------------------------------------
-			}
-			else
-			{
-				//-----------------------------Reporter
+				//-------------------------------------------------------------------------------
+				}else{
+				//-----------------------------Reporter------------------------------------------/
 				UtilityObject.fReportfail("Contract create", "Contract is not successfully created", logger, driver, Extndreport);
-				//------------------------------------
-			}
+				//-------------------------------------------------------------------------------/
+				}
 	}
 
 }
