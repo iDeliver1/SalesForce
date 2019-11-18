@@ -2,14 +2,12 @@ package com.SaleForce.e2e;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.SaleForce.libraries.Excel_Libraries;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.SaleForce.webelements.SaleForce_Contracts;
@@ -46,7 +44,7 @@ public class T_Contracts {
 				Utility_Libraries.fVerifyvalue(Launch, logger);
 				Browser = Launch[0];
 				Url = Launch[1];
-				
+				//---------------------------------------------------------------------------------------------------------------
 				driver = Utility_Libraries.fgetBrowser(Browser, driver);					 
 				driver.navigate().to(Url);	
 				driver.manage().window().maximize();
@@ -69,8 +67,6 @@ public class T_Contracts {
 				SaleForce_Login objLoginClass =  new SaleForce_Login(logger, driver, Extndreport);						
 				objLoginClass.Login(Username,Password);							
 			}
-		
-		
 		
 		@Test(priority=3)
 		public void Contract_Create() throws Throwable
@@ -98,6 +94,7 @@ public class T_Contracts {
 			CompanySigned 			= Contracts[5];
 			DescriptionArea 		= Contracts[6];
 			
+			//-------------------------------------------------------------------------------------------
 			SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
 			objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,CompanySigned,DescriptionArea);
 		}
