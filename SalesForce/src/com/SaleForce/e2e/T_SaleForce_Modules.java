@@ -219,10 +219,7 @@ public class T_SaleForce_Modules {
 	@AfterTest
 	public void Close()
 		{
-			//----------------------------------------------Start report test-------------------------------------------------
-			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
-			logger 		= Extndreport.startTest(testName);
-			
 			driver.close();
+			driver.quit();
 		}
 }
