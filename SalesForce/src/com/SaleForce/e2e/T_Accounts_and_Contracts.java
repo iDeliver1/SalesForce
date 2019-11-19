@@ -111,22 +111,20 @@ public class T_Accounts_and_Contracts {
 			String PriceBook            = Excel_Libraries.fRead("PriceBook", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 			String ContractMonth 	    = Excel_Libraries.fRead("ContractMonth", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 			String OwnerExpiration      = Excel_Libraries.fRead("OwnerExpiration", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
-			String CompanySigned        = Excel_Libraries.fRead("CompanySigned", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 			String DescriptionArea      = Excel_Libraries.fRead("DescriptionArea", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 			
-			String[] Contracts = {CustomerName, CustomerTitle, PriceBook, ContractMonth, OwnerExpiration,CompanySigned,DescriptionArea};
+			String[] Contracts = {CustomerName, CustomerTitle, PriceBook, ContractMonth, OwnerExpiration,DescriptionArea};
 			Utility_Libraries.fVerifyvalue(Contracts,logger);
 			CustomerName 			= Contracts[0];
 			CustomerTitle 		    = Contracts[1];
 			PriceBook            	= Contracts[2];
 			ContractMonth 	        = Contracts[3];
 			OwnerExpiration 		= Contracts[4];
-			CompanySigned 			= Contracts[5];
-			DescriptionArea 		= Contracts[6];
+			DescriptionArea 		= Contracts[5];
 			
 			//--------------------------------------------------------------------------------
 			SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
-			objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,CompanySigned,DescriptionArea);
+			objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,DescriptionArea);
 		}
 	
 	@Test(priority=5,enabled=true)

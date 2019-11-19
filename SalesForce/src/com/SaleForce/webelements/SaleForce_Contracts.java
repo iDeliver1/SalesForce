@@ -22,9 +22,10 @@ public class SaleForce_Contracts {
 		this.Extndreport = Extndreport;
 	}
 	
-	public void Create_Contracts(String CustomerName,String CustomerTitle,String PriceBook,String ContractMonth,String OwnerExpiration,String CompanySigned,String DescriptionArea) throws Throwable
+	public void Create_Contracts(String CustomerName,String CustomerTitle,String PriceBook,String ContractMonth,String OwnerExpiration,String DescriptionArea) throws Throwable
 	{
 			String CurrentDate = UtilityObject.fGetCurrentDate();
+			String AccountName = driver.findElement(CreateContractPOM.Account()).getText();
 			driver.findElement(CreateContractPOM.ContractTab()).click();
 			Thread.sleep(3000);
 			try
@@ -34,6 +35,7 @@ public class SaleForce_Contracts {
 			}
 			catch(Exception f) {}
 			Thread.sleep(2000);
+		
 		 	driver.findElement(CreateContractPOM.NewLink()).click();
 			 	try
 			 	{
@@ -58,11 +60,10 @@ public class SaleForce_Contracts {
 			driver.findElement(CreateContractPOM.ContractMonth()).sendKeys(ContractMonth);
 			Select OwnerExpirationNotice = new Select(driver.findElement(CreateContractPOM.OwnerExpirationNotice()));
 			OwnerExpirationNotice.selectByVisibleText(OwnerExpiration);
-			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys(CompanySigned);
+			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys(AccountName);
 			driver.findElement(CreateContractPOM.DescriptionArea()).sendKeys(DescriptionArea);
-			//-------------------------Billing Address----------------------------------------/
-			Thread.sleep(3000);
 			driver.findElement(CreateContractPOM.SaveButton()).click();
+			Thread.sleep(2000);
 			
 			//----------------------Verification Contract is Created-------------------------/
 			

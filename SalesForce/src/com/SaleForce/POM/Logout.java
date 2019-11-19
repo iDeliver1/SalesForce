@@ -18,4 +18,9 @@ public class Logout {
 		return Source;
 	}
 	
+	public By LogoutVerify() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Logout_Verify", "Logout"));
+		return Source;
+	}
 }

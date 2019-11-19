@@ -1,6 +1,8 @@
 package com.SaleForce.webelements;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.SaleForce.POM.Logout;
 import com.SaleForce.libraries.Utility_Libraries;
@@ -27,15 +29,27 @@ public class SaleForce_Logout {
 		try
 		{
 			driver.findElement(LogoutPOM.Account()).click();
-				//-----------------------------Reporter
-				Utility_Object.fReportpass("Logout", "User is successfully logout", logger, driver);
-				//------------------------------------
 			driver.findElement(LogoutPOM.Logout_()).click();
+				try
+				{
+					WebDriverWait wait = new WebDriverWait(driver,10);
+					wait.until(ExpectedConditions.presenceOfElementLocated(LogoutPOM.LogoutVerify()));
+					driver.findElement(LogoutPOM.LogoutVerify()).isDisplayed();
+						//-----------------------------Reporter
+						Utility_Object.fReportpass("Logout", "User is successfully logout", logger, driver);
+						//------------------------------------
+				}
+				catch(Exception e)
+				{
+					//-----------------------------Reporter
+					Utility_Object.fReportfail("Logout", "Error :" + e +" User is not successfully logout", logger, driver, Extndreport);
+					//------------------------------------
+				}
 		}
 		catch(Exception e)
 		{
 			//-----------------------------Reporter
-			Utility_Object.fReportfail("Logout", "Error :" + e +" User is not successfully logout", logger, driver, Extndreport);
+			Utility_Object.fReportfail("Logout", "Error :" + e, logger, driver, Extndreport);
 			//------------------------------------
 		}
 	}
