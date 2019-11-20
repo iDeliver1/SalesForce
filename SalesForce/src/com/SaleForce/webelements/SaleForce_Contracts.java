@@ -1,7 +1,10 @@
 package com.SaleForce.webelements;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.SaleForce.POM.CreateContract;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -22,20 +25,19 @@ public class SaleForce_Contracts {
 		this.Extndreport = Extndreport;
 	}
 	
-	public void Create_Contracts(String CustomerName,String CustomerTitle,String PriceBook,String ContractMonth,String OwnerExpiration,String DescriptionArea) throws Throwable
+	public String Create_Contracts(String CustomerName,String CustomerTitle,String PriceBook,String ContractMonth,String OwnerExpiration,String DescriptionArea) throws Throwable
 	{
 			String CurrentDate = UtilityObject.fGetCurrentDate();
 			String AccountName = driver.findElement(CreateContractPOM.Account()).getText();
+			WebDriverWait wait = new WebDriverWait(driver,30);
 			driver.findElement(CreateContractPOM.ContractTab()).click();
-			Thread.sleep(3000);
-			try
-			{
-				//Close the popup window
-				driver.findElement(CreateContractPOM.PopUpWindow()).click();
-			}
-			catch(Exception f) {}
-			Thread.sleep(2000);
-		
+				try
+				{
+					//Close the popup window
+					driver.findElement(CreateContractPOM.PopUpWindow()).click();
+				}
+				catch(Exception f) {}
+			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateContractPOM.NewLink()));
 		 	driver.findElement(CreateContractPOM.NewLink()).click();
 			 	try
 			 	{
@@ -50,7 +52,6 @@ public class SaleForce_Contracts {
 			 		UtilityObject.fReportfail("Create Contract", "Error :" + e +" Create Contract page is not open successfully", logger, driver, Extndreport);
 					//------------------------------------
 			 	}
-			 	
 	        driver.findElement(CreateContractPOM.CustomerName()).sendKeys(CustomerName);
 	        driver.findElement(CreateContractPOM.CustomerTitle()).sendKeys(CustomerTitle);
 			driver.findElement(CreateContractPOM.CustomerDate()).sendKeys(CurrentDate);
@@ -63,20 +64,21 @@ public class SaleForce_Contracts {
 			driver.findElement(CreateContractPOM.CompanySigned()).sendKeys(AccountName);
 			driver.findElement(CreateContractPOM.DescriptionArea()).sendKeys(DescriptionArea);
 			driver.findElement(CreateContractPOM.SaveButton()).click();
-			Thread.sleep(2000);
-			
-			//----------------------Verification Contract is Created-------------------------/
-			
-			String ContractNumber =  driver.findElement(CreateContractPOM.PageDescription()).getText();
-				if(ContractNumber!=""){
-			    //-----------------------------Reporter------------------------------------------/
-				UtilityObject.fReportpass("Contract create", "Contract is successfully created", logger, driver);
-				//-------------------------------------------------------------------------------
-				}else{
-				//-----------------------------Reporter------------------------------------------/
-				UtilityObject.fReportfail("Contract create", "Contract is not successfully created", logger, driver, Extndreport);
-				//-------------------------------------------------------------------------------/
+			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateContractPOM.PageDescription()));
+				//----------------------Verification Contract is Created-------------------------/
+				if(driver.findElement(CreateContractPOM.PageDescription()).getText().matches("[0-9]{8}"))
+				{
+					    //-----------------------------Reporter------------------------------------------/
+						UtilityObject.fReportpass("Contract create", "Contract is successfully created", logger, driver);
+						//-------------------------------------------------------------------------------
+						return driver.findElement(CreateContractPOM.PageDescription()).getText();
 				}
+				else
+				{
+						//-----------------------------Reporter------------------------------------------/
+						UtilityObject.fReportfail("Contract create", "Contract is not successfully created", logger, driver, Extndreport);
+						//-------------------------------------------------------------------------------/
+				}
+			return null;
 	}
-
 }

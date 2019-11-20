@@ -7,7 +7,13 @@ import com.SaleForce.libraries.Utility_Libraries;
 
 public class CreateAccounts {
 
-	public By AccoutTab() throws Throwable
+	public By PopUpWindow() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("PopUpWindow", "Account"));
+		return Source;
+	}
+	
+	public By AccountTab() throws Throwable
 	{
 		By Source = By.xpath(Utility_Libraries.fGetElement("AccoutTab", "Account"));
 		return Source;

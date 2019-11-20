@@ -21,7 +21,6 @@ public class SaleForce_Accounts {
 	
 	public SaleForce_Accounts(ExtentTest logger,WebDriver driver,ExtentReports Extndreport) {
 
-		
 		this.driver = driver;
 		this.logger = logger;
 		this.Extndreport = Extndreport;
@@ -30,53 +29,47 @@ public class SaleForce_Accounts {
 	public void Create_Accounts(String AccountName,String AccountNumber,String AccountDescription) throws Throwable
 	{
 			WebDriverWait wait = new WebDriverWait(driver,30);
-			
-			driver.findElement(CreateAccountPOM.AccoutTab()).click();
-			 
-			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateContractPOM.PopUpWindow()));
-			
-			try
-			{
-				//Close the popup window
-				driver.findElement(CreateContractPOM.PopUpWindow()).click();
-			}
-			catch(Exception f) {}
-			
-			Thread.sleep(3000);
-			
+			driver.findElement(CreateAccountPOM.AccountTab()).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateAccountPOM.PopUpWindow()));
+				try
+				{
+					//Close the popup window
+					driver.findElement(CreateAccountPOM.PopUpWindow()).click();
+				}
+				catch(Exception f) {}
+			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateAccountPOM.PopUpWindow()));
 		 	driver.findElement(CreateAccountPOM.New()).click();
-			try
-			{
-				driver.findElement(CreateAccountPOM.AccountName()).isDisplayed();
-				//-----------------------------Reporter
-				UtilityObject.fReportpass("Create Account", "Create Account page is open successfully", logger, driver);
-				//------------------------------------
-			}
-			catch(Exception e)
-			{
-				//-----------------------------Reporter
-				UtilityObject.fReportfail("Create Account", "Error :" + e +" Create Account page is not open successfully", logger, driver, Extndreport);
-				//------------------------------------
-			}
-			
+				try
+				{
+					driver.findElement(CreateAccountPOM.AccountName()).isDisplayed();
+					//-----------------------------Reporter
+					UtilityObject.fReportpass("Create Account", "Create Account page is open successfully", logger, driver);
+					//------------------------------------
+				}
+				catch(Exception e)
+				{
+					//-----------------------------Reporter
+					UtilityObject.fReportfail("Create Account", "Error :" + e +" Create Account page is not open successfully", logger, driver, Extndreport);
+					//------------------------------------
+				}
 			driver.findElement(CreateAccountPOM.AccountName()).sendKeys(AccountName);
 			driver.findElement(CreateAccountPOM.AccountNumber()).sendKeys(AccountNumber);
 			driver.findElement(CreateAccountPOM.Account_Description()).sendKeys(AccountDescription);
 			driver.findElement(CreateAccountPOM.Account_Save()).click();
-			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateAccountPOM.AccountVerification()));
-		
 			String Account_Created = driver.findElement(CreateAccountPOM.AccountVerification()).getText();
-			if(Account_Created.contains(AccountName))
-			{
-				UtilityObject.fReportpass("Account create", "Account is created successfully", logger, driver);
-			}
-			
-			else 
-			{
-				UtilityObject.fReportfail("Account create", "Account is not created successfully", logger, driver, Extndreport);
-			}	
-		
+				if(Account_Created.contains(AccountName))
+				{
+					//-----------------------------Reporter
+					UtilityObject.fReportpass("Account create", "Account is created successfully", logger, driver);
+					//------------------------------------
+				}
+				
+				else 
+				{
+					//-----------------------------Reporter
+					UtilityObject.fReportfail("Account create", "Account is not created successfully", logger, driver, Extndreport);
+					//------------------------------------
+				}	
 	}
-
 }
