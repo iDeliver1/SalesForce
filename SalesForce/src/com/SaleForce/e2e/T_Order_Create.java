@@ -15,6 +15,8 @@ import com.SaleForce.webelements.SaleForce_Accounts;
 import com.SaleForce.webelements.SaleForce_Contracts;
 import com.SaleForce.webelements.SaleForce_Login;
 import com.SaleForce.webelements.SaleForce_Logout;
+import com.SaleForce.webelements.SaleForce_Product;
+import com.SaleForce.webelements.SaleForce_Orders;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -27,6 +29,7 @@ public class T_Order_Create {
 	String testName = T_Leads.class.getName();
 	String Contract_Number;
 	String Account_Name;
+	String Order_Number;
 	
 	@BeforeTest
 	public void Create() throws Throwable 
@@ -129,6 +132,49 @@ public class T_Order_Create {
 			Contract_Number = objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,DescriptionArea);
 		}
 	
+	@Test(priority=5,enabled=true)
+	public void Order_Create() throws Throwable
+		{	
+			//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+			
+			//---------------------------------Variables--------------------------------------
+			String AccountName 	      = Account_Name;
+			String ContractNumber 	  = Contract_Number;
+			String OrderDescription   = Excel_Libraries.fRead("OrderDescription", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Order");
+			
+			String[] Order = {AccountName, ContractNumber, OrderDescription};
+			Utility_Libraries.fVerifyvalue(Order,logger);
+			AccountName 			= Order[0];
+			ContractNumber 		    = Order[1];
+			OrderDescription        = Order[2];
+			
+			//--------------------------------------------------------------------------------
+			SaleForce_Orders objOrderClass = new SaleForce_Orders(logger, driver, Extndreport);
+			Order_Number = objOrderClass.Create_Orders(AccountName, ContractNumber, OrderDescription);  
+		}
+	
+	@Test(priority=6,enabled=true)
+	public void Product_Create() throws Throwable
+		{	
+			//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+			
+			//---------------------------------Variables--------------------------------------
+			String Product_Name 	  = Excel_Libraries.fRead("Product_Name", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Order");
+			String Product_Code 	  = Excel_Libraries.fRead("Product_Code", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Order");
+			
+			String[] Order = {Product_Name, Product_Code};
+			Utility_Libraries.fVerifyvalue(Order,logger);
+			Product_Name 			= Order[0];
+			Product_Code 		    = Order[1];
+			
+			//--------------------------------------------------------------------------------
+			SaleForce_Product objOrderClass = new SaleForce_Product(logger, driver, Extndreport);
+			Order_Number = objOrderClass.Create_Product(Product_Name, Product_Code);  
+		}
 	@Test(priority=7,enabled=true)
 	public void Logout() throws Throwable
 		{

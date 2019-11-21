@@ -9,7 +9,7 @@ import com.SaleForce.libraries.Utility_Libraries;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
-public class SalesForce_Orders {
+public class SaleForce_Orders {
 		
 		WebDriver driver;
 		ExtentTest logger;
@@ -17,14 +17,14 @@ public class SalesForce_Orders {
 		CreateOrder CreateOrderPOM = new CreateOrder();
 		Utility_Libraries UtilityObject = new Utility_Libraries();
 		
-		public SalesForce_Orders(ExtentTest logger,WebDriver driver,ExtentReports Extndreport)
+		public SaleForce_Orders(ExtentTest logger,WebDriver driver,ExtentReports Extndreport)
 		{
 			this.driver = driver;
 			this.logger = logger;
 			this.Extndreport = Extndreport;
 		}
 		
-		public void Create_Orders(String AccountName,String OrderStartDate,String ContractNumber,String OrderDescription) throws Throwable
+		public String Create_Orders(String AccountName,String ContractNumber,String OrderDescription) throws Throwable
 		{
 				try
 				{
@@ -63,12 +63,13 @@ public class SalesForce_Orders {
 					
 					//----------------------Verification Contract is Created-------------------------/
 					String OrderNumber_ =  driver.findElement(CreateOrderPOM.OrderNumber()).getText();
-					String OrderNumberCreate = OrderNumber_.replace("Order ","");
-						if(OrderNumberCreate.matches("[0-9]{8}"))
+					OrderNumber_ = OrderNumber_.replace("Order ","");
+						if(OrderNumber_.matches("[0-9]{8}"))
 						{
 						    //-----------------------------Reporter------------------------------------------/
 							UtilityObject.fReportpass("Order create", "Order is successfully created", logger, driver);
 							//-------------------------------------------------------------------------------
+							return OrderNumber_;
 						}
 						else
 						{
@@ -83,5 +84,6 @@ public class SalesForce_Orders {
 					UtilityObject.fReportfail("Error", "Error : " + e, logger, driver, Extndreport);
 					//-------------------------------------------------------------------------------/
 				}
+			return null;
 		}
 }
