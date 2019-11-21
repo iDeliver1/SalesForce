@@ -5,20 +5,24 @@ import java.util.Date;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.SaleForce.libraries.Excel_Libraries;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.SaleForce.webelements.SaleForce_Accounts;
+import com.SaleForce.webelements.SaleForce_Campaign;
 import com.SaleForce.webelements.SaleForce_Contracts;
+import com.SaleForce.webelements.SaleForce_Leads;
 import com.SaleForce.webelements.SaleForce_Login;
+import com.SaleForce.webelements.SaleForce_Logout;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class T_Accounts_and_Contracts {
-	
+public class T_SaleForce_Modules {
+
 	WebDriver driver;						
 	ExtentTest logger;						
 	ExtentReports Extndreport;  			
@@ -126,13 +130,68 @@ public class T_Accounts_and_Contracts {
 		}
 	
 	@Test(priority=5,enabled=true)
-	public void Close()
+	public void Campaign_Create() throws Throwable
 		{
 			//----------------------------------------------Start report test-------------------------------------------------
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
+		
+			//---------------------------------Variables--------------------------------------
+			String Name 	    = Excel_Libraries.fRead("Name", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
+			String Expected_rev = Excel_Libraries.fRead("Expected_rev", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
+			String Budget_cost  = Excel_Libraries.fRead("Budget_cost", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
+			String Status_ 	    = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
 			
-			driver.close();
+			String[] Campaign = {Name, Expected_rev, Budget_cost,Status_};
+			Utility_Libraries.fVerifyvalue(Campaign,logger);
+			Name 			= Campaign[0];
+			Expected_rev    = Campaign[1];
+			Budget_cost 	= Campaign[2];
+			Status_         = Campaign[3];
+			//--------------------------------------------------------------------------------
+			
+			SaleForce_Campaign objCampaignClass = new SaleForce_Campaign(logger, driver, Extndreport);
+			objCampaignClass.Create_Campaign(Name, Expected_rev, Budget_cost, "day", Status_);	
+		
+		}
+	
+	@Test(priority=6,enabled=true)
+	public void Lead_Create() throws Throwable
+		{	
+		 	//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+			
+			//---------------------------------Variables--------------------------------------
+			String FName 	    = Excel_Libraries.fRead("Fname", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String LName 	    = Excel_Libraries.fRead("Lname", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String CompanyName  = Excel_Libraries.fRead("CompanyName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String Status 	    = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Leads");
+			String Campaign     = Excel_Libraries.fRead("Status", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Campaigns");
+			
+			String[] Leads = {FName, LName, CompanyName, Status, Campaign};
+			Utility_Libraries.fVerifyvalue(Leads,logger);
+			FName 			= Leads[0];
+			LName 		    = Leads[1];
+			CompanyName 	= Leads[2];
+			Status 	        = Leads[3];
+			Campaign 		= Leads[4];
+			//--------------------------------------------------------------------------------
+			
+			SaleForce_Leads objLeadClass = new SaleForce_Leads(logger, driver, Extndreport);
+			objLeadClass.Create_Leads(FName, LName, CompanyName, Status, Campaign);
+		}
+	
+	@Test(priority=7,enabled=true)
+	public void Logout() throws Throwable
+		{
+		
+			//----------------------------------------------Start report test-------------------------------------------------
+			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+			logger 		= Extndreport.startTest(testName);
+		
+			SaleForce_Logout objLogoutClass =  new SaleForce_Logout(logger, driver, Extndreport);	
+			objLogoutClass.Logout();
 		}
 	
 	@AfterMethod	
@@ -157,4 +216,10 @@ public class T_Accounts_and_Contracts {
 				  Extndreport.flush();
 		}
 
+	@AfterTest
+	public void Close()
+		{
+			driver.close();
+			driver.quit();
+		}
 }

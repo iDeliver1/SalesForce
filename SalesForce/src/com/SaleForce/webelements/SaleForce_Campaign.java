@@ -30,14 +30,13 @@ public class SaleForce_Campaign {
 		
 		String CurrentDate = Utility_Object.fGetCurrentDate();
 		String AddDate = Utility_Object.fAddDate(CurrentDate, 10, Condition);
+		WebDriverWait wait = new WebDriverWait(driver,10);
 		
 		try
 		{
 			driver.findElement(CreateCampaignPOM.Tab()).click();
 				try
 				{
-					driver.switchTo().frame(0);
-					WebDriverWait wait = new WebDriverWait(driver,6);
 					wait.until(ExpectedConditions.presenceOfElementLocated(CreateCampaignPOM.Close()));
 					//Close the popup window
 					driver.findElement(CreateCampaignPOM.Close()).click();
@@ -65,7 +64,6 @@ public class SaleForce_Campaign {
 			driver.findElement(CreateCampaignPOM.Expected_rev()).sendKeys(Expected_rev);
 			driver.findElement(CreateCampaignPOM.Budget_cost()).sendKeys(Budget_cost);
 			driver.findElement(CreateCampaignPOM.Save()).click();
-			WebDriverWait wait = new WebDriverWait(driver,6);
 			wait.until(ExpectedConditions.presenceOfElementLocated(CreateCampaignPOM.HeadName()));
 			String CampaignName = driver.findElement(CreateCampaignPOM.HeadName()).getText();
 				if(CampaignName.contains(Name))

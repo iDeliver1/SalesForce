@@ -12,6 +12,7 @@ import com.SaleForce.libraries.Excel_Libraries;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.SaleForce.webelements.SaleForce_Contracts;
 import com.SaleForce.webelements.SaleForce_Login;
+import com.SaleForce.webelements.SaleForce_Logout;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -80,24 +81,35 @@ public class T_Contracts {
 				String PriceBook            = Excel_Libraries.fRead("PriceBook", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 				String ContractMonth 	    = Excel_Libraries.fRead("ContractMonth", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 				String OwnerExpiration     	= Excel_Libraries.fRead("OwnerExpiration", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
-				String CompanySigned        = Excel_Libraries.fRead("CompanySigned", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 				String DescriptionArea      = Excel_Libraries.fRead("DescriptionArea", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 				
-				String[] Contracts = {CustomerName, CustomerTitle, PriceBook, ContractMonth, OwnerExpiration,CompanySigned,DescriptionArea};
+				String[] Contracts = {CustomerName, CustomerTitle, PriceBook, ContractMonth, OwnerExpiration,DescriptionArea};
 				Utility_Libraries.fVerifyvalue(Contracts,logger);
 				CustomerName 			= Contracts[0];
 				CustomerTitle 		    = Contracts[1];
 				PriceBook            	= Contracts[2];
 				ContractMonth 	        = Contracts[3];
 				OwnerExpiration 		= Contracts[4];
-				CompanySigned 			= Contracts[5];
-				DescriptionArea 		= Contracts[6];
+				DescriptionArea 		= Contracts[5];
+				
 				//-------------------------------------------------------------------------------------------
 				SaleForce_Contracts objContractClass = new SaleForce_Contracts(logger, driver, Extndreport);
-				objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,CompanySigned,DescriptionArea);
+				objContractClass.Create_Contracts(CustomerName,CustomerTitle,PriceBook,ContractMonth,OwnerExpiration,DescriptionArea);
 			}
 		
 		@Test(priority=4,enabled=true)
+		public void Logout() throws Throwable
+			{
+			
+				//----------------------------------------------Start report test-------------------------------------------------
+				testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+				logger 		= Extndreport.startTest(testName);
+			
+				SaleForce_Logout objLogoutClass =  new SaleForce_Logout(logger, driver, Extndreport);	
+				objLogoutClass.Logout();
+			}
+		
+		@Test(priority=5,enabled=true)
 		public void Close()
 			{
 				//----------------------------------------------Start report test-------------------------------------------------
@@ -105,7 +117,6 @@ public class T_Contracts {
 				logger 		= Extndreport.startTest(testName);
 				driver.close();
 			}
-		
 		@AfterMethod	
 		public void Flush(ITestResult result) throws Throwable		
 		    {
@@ -126,5 +137,6 @@ public class T_Contracts {
 			        }	  
 				  Extndreport.endTest(logger);
 				  Extndreport.flush();
-		    }		
+		    }
+		
 }

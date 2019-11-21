@@ -32,6 +32,9 @@ public class SaleForce_Login {
 			driver.findElement(LoginPOM.Username()).sendKeys(Username);
 			//Enter Password
 			driver.findElement(LoginPOM.Password()).sendKeys(Password);
+				//-----------------------------Reporter
+				Utility_Object.fReportpass("Username and Password", "Enter Username and Password details", logger, driver);
+				//------------------------------------
 			//Click Signin
 			driver.findElement(LoginPOM.Signin()).click();
 				try
@@ -86,6 +89,9 @@ public class SaleForce_Login {
 			{
 				//Enter yop email
 				objdriver1.findElement(LoginPOM.YopUser()).sendKeys(Username);
+					//-----------------------------Reporter
+					Utility_Object.fReportpass("Username", "Enter username : " + Username, logger, objdriver1);
+					//------------------------------------
 				//Click on submit button
 				objdriver1.findElement(LoginPOM.YopSubmit()).click();
 				objdriver1.switchTo().frame(2);

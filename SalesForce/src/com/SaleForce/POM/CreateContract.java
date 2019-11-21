@@ -18,6 +18,12 @@ public class CreateContract {
 		return Source;
 	}
 	
+	public By Account() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Account", "Contracts"));
+		return Source;
+	}
+	
 	public By CustomerName() throws Throwable
 	{
 		By Source = By.xpath(Utility_Libraries.fGetElement("Customer_Name", "Contracts"));
