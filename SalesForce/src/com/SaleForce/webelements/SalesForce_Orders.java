@@ -54,7 +54,7 @@ public class SalesForce_Orders {
 				driver.findElement(CreateOrderPOM.ContractNumber()).sendKeys(ContractNumber);
 				driver.findElement(CreateOrderPOM.OrderDescription()).sendKeys(OrderDescription);
 				//-------------------------Billing Address----------------------------------------/
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 				driver.findElement(CreateOrderPOM.OrderSaveButton()).click();
 				
 				//----------------------Verification Contract is Created-------------------------/
