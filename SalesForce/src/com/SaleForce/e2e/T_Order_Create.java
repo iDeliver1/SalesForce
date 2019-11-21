@@ -133,7 +133,6 @@ public class T_Order_Create {
 	public void Logout() throws Throwable
 		{
 		
-		
 			//----------------------------------------------Start report test-------------------------------------------------
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
