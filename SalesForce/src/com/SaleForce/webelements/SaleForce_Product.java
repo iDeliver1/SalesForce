@@ -21,14 +21,14 @@ public class SaleForce_Product {
 		this.Extndreport = Extndreport;
 	}
 
-	public String Create_Product(String Product_Name, String Product_Code) throws Throwable
+	public String Create_Product(String Product_Name) throws Throwable
 	{
 		try
 		{
 			driver.findElement(CreateProductPOM.Tab()).click();
 			driver.findElement(CreateProductPOM.New()).click();
 			driver.findElement(CreateProductPOM.Product_Name()).sendKeys(Product_Name);
-			driver.findElement(CreateProductPOM.Product_Code()).sendKeys(Product_Code);
+			driver.findElement(CreateProductPOM.Product_Code()).sendKeys(Utility_Libraries.fTimestamp());
 			driver.findElement(CreateProductPOM.Save()).click();
 			String Product = driver.findElement(CreateProductPOM.Verify()).getText();
 				if(Product.contains(Product_Name))

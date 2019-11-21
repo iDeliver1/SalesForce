@@ -22,7 +22,7 @@ public class SaleForce_AddProduct {
 		this.Extndreport = Extndreport;
 	}
 
-	public void Product()
+	public void Product_Add()
 	{
 		try
 		{
