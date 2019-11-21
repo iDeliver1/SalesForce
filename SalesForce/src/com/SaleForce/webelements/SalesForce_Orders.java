@@ -2,8 +2,6 @@ package com.SaleForce.webelements;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
-
-import com.SaleForce.POM.CreateContract;
 import com.SaleForce.POM.CreateOrder;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -26,6 +24,7 @@ public class SalesForce_Orders {
 		
 		public void Create_Orders(String AccountName,String OrderStartDate,String ContractNumber,String OrderDescription) throws Throwable
 		{
+				String CurrentDate = UtilityObject.fGetCurrentDate();
 				driver.findElement(CreateOrderPOM.OrderTab()).click();
 				Thread.sleep(3000);
 				try
@@ -51,7 +50,7 @@ public class SalesForce_Orders {
 				 	}
 				 	
 		        driver.findElement(CreateOrderPOM.AccountName()).sendKeys(AccountName);
-		        driver.findElement(CreateOrderPOM.OrderStartDate()).sendKeys(OrderStartDate);
+		        driver.findElement(CreateOrderPOM.OrderStartDate()).sendKeys(CurrentDate);
 				driver.findElement(CreateOrderPOM.ContractNumber()).sendKeys(ContractNumber);
 				driver.findElement(CreateOrderPOM.OrderDescription()).sendKeys(OrderDescription);
 				//-------------------------Billing Address----------------------------------------/
