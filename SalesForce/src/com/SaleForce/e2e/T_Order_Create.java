@@ -133,6 +133,7 @@ public class T_Order_Create {
 	public void Logout() throws Throwable
 		{
 		
+		
 			//----------------------------------------------Start report test-------------------------------------------------
 			testName	= new Object(){}.getClass().getEnclosingMethod().getName();
 			logger 		= Extndreport.startTest(testName);
@@ -140,6 +141,7 @@ public class T_Order_Create {
 			SaleForce_Logout objLogoutClass =  new SaleForce_Logout(logger, driver, Extndreport);	
 			objLogoutClass.Logout();
 		}
+	
 	
 	@AfterMethod	
 	public void Flush(ITestResult result) throws Throwable		
