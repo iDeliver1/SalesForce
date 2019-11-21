@@ -26,8 +26,11 @@ public class SaleForce_Accounts {
 		this.Extndreport = Extndreport;
 	}
 	
-	public void Create_Accounts(String AccountName,String AccountNumber,String AccountDescription) throws Throwable
+	public String Create_Accounts(String AccountName,String AccountNumber,String AccountDescription) throws Throwable
 	{
+	    try
+	    {
+	    	AccountName = AccountName+Utility_Libraries.fTimestamp();
 			WebDriverWait wait = new WebDriverWait(driver,30);
 			driver.findElement(CreateAccountPOM.AccountTab()).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateAccountPOM.PopUpWindow()));
@@ -37,7 +40,6 @@ public class SaleForce_Accounts {
 					driver.findElement(CreateAccountPOM.PopUpWindow()).click();
 				}
 				catch(Exception f) {}
-			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateAccountPOM.PopUpWindow()));
 		 	driver.findElement(CreateAccountPOM.New()).click();
 				try
 				{
@@ -63,13 +65,21 @@ public class SaleForce_Accounts {
 					//-----------------------------Reporter
 					UtilityObject.fReportpass("Account create", "Account is created successfully", logger, driver);
 					//------------------------------------
+					return Account_Created;
 				}
-				
 				else 
 				{
 					//-----------------------------Reporter
 					UtilityObject.fReportfail("Account create", "Account is not created successfully", logger, driver, Extndreport);
 					//------------------------------------
-				}	
+				}
+	    }
+	    catch(Exception e)
+	    {
+	    	//-----------------------------Reporter
+			UtilityObject.fReportfail("Error", "Error"+ e, logger, driver, Extndreport);
+			//------------------------------------
+	    }
+		return null;
 	}
 }

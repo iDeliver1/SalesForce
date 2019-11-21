@@ -27,6 +27,8 @@ public class SaleForce_Contracts {
 	
 	public String Create_Contracts(String CustomerName,String CustomerTitle,String PriceBook,String ContractMonth,String OwnerExpiration,String DescriptionArea) throws Throwable
 	{
+		try
+		{
 			String CurrentDate = UtilityObject.fGetCurrentDate();
 			String AccountName = driver.findElement(CreateContractPOM.Account()).getText();
 			WebDriverWait wait = new WebDriverWait(driver,30);
@@ -79,6 +81,13 @@ public class SaleForce_Contracts {
 						UtilityObject.fReportfail("Contract create", "Contract is not successfully created", logger, driver, Extndreport);
 						//-------------------------------------------------------------------------------/
 				}
-			return null;
+		}
+		catch(Exception e)
+		{
+			//-----------------------------Reporter
+			UtilityObject.fReportfail("Error", "Error"+ e, logger, driver, Extndreport);
+			//------------------------------------
+		}
+	    return null;
 	}
 }

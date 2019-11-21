@@ -26,6 +26,7 @@ public class T_Order_Create {
 	ExtentReports Extndreport;  			
 	String testName = T_Leads.class.getName();
 	String Contract_Number;
+	String Account_Name;
 	
 	@BeforeTest
 	public void Create() throws Throwable 
@@ -96,7 +97,7 @@ public class T_Order_Create {
 			
 			//--------------------------------------------------------------------------------
 			SaleForce_Accounts objAccountClass = new SaleForce_Accounts(logger, driver, Extndreport);
-			objAccountClass.Create_Accounts(AccountName,AccountNumber,AccountDescription);
+			Account_Name = objAccountClass.Create_Accounts(AccountName,AccountNumber,AccountDescription);
 		}
 	
 	@Test(priority=4,enabled=true)
@@ -107,7 +108,7 @@ public class T_Order_Create {
 			logger 		= Extndreport.startTest(testName);
 			
 			//---------------------------------Variables--------------------------------------
-			String CustomerName 	    = Excel_Libraries.fRead("AccountName", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
+			String CustomerName 	    = Account_Name;
 			String CustomerTitle 	    = Excel_Libraries.fRead("CustomerTitle", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 			String PriceBook            = Excel_Libraries.fRead("PriceBook", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 			String ContractMonth 	    = Excel_Libraries.fRead("ContractMonth", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");

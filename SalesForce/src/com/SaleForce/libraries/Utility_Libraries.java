@@ -71,7 +71,7 @@ public class Utility_Libraries {
 		Date now = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy-hh-mm-ss");
 		String time = dateFormat.format(now);
-		return time;
+		return time.replace("-", "");
 	}
 	 
    public static String fScreenReport(WebDriver scrdriver) throws Throwable
