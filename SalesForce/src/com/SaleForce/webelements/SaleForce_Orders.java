@@ -67,14 +67,14 @@ public class SaleForce_Orders {
 						if(OrderNumber_.matches("[0-9]{8}"))
 						{
 						    //-----------------------------Reporter------------------------------------------/
-							UtilityObject.fReportpass("Order create", "Order is successfully created", logger, driver);
+							UtilityObject.fReportpass("Order create", "Order is successfully created Order Number = " + OrderNumber_, logger, driver);
 							//-------------------------------------------------------------------------------
 							return OrderNumber_;
 						}
 						else
 						{
 							//-----------------------------Reporter------------------------------------------/
-							UtilityObject.fReportfail("Order create", "Order is not successfully created", logger, driver, Extndreport);
+							UtilityObject.fReportfail("Order create", "Order is not successfully created Order Number = " + OrderNumber_, logger, driver, Extndreport);
 							//-------------------------------------------------------------------------------/
 						}
 				}

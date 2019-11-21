@@ -12,6 +12,12 @@ public class CreateProduct {
 		return Source;
 	}
 	
+	public By PopUpWindow() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("PopUpWindow", "Product"));
+		return Source;
+	}
+	
 	public By Product_Name() throws Throwable
 	{
 		By Source = By.xpath(Utility_Libraries.fGetElement("Product_Name", "Product"));

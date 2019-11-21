@@ -67,18 +67,19 @@ public class SaleForce_Contracts {
 			driver.findElement(CreateContractPOM.DescriptionArea()).sendKeys(DescriptionArea);
 			driver.findElement(CreateContractPOM.SaveButton()).click();
 			wait.until(ExpectedConditions.visibilityOfElementLocated(CreateContractPOM.PageDescription()));
+			String ContractNumber = driver.findElement(CreateContractPOM.PageDescription()).getText();
 				//----------------------Verification Contract is Created-------------------------/
-				if(driver.findElement(CreateContractPOM.PageDescription()).getText().matches("[0-9]{8}"))
+				if(ContractNumber.matches("[0-9]{8}"))
 				{
 					    //-----------------------------Reporter------------------------------------------/
-						UtilityObject.fReportpass("Contract create", "Contract is successfully created", logger, driver);
+						UtilityObject.fReportpass("Contract create", "Contract is successfully created Contract number = " + ContractNumber, logger, driver);
 						//-------------------------------------------------------------------------------
 						return driver.findElement(CreateContractPOM.PageDescription()).getText();
 				}
 				else
 				{
 						//-----------------------------Reporter------------------------------------------/
-						UtilityObject.fReportfail("Contract create", "Contract is not successfully created", logger, driver, Extndreport);
+						UtilityObject.fReportfail("Contract create", "Contract is not successfully created Contract number = " + ContractNumber, logger, driver, Extndreport);
 						//-------------------------------------------------------------------------------/
 				}
 		}

@@ -1,6 +1,9 @@
 package com.SaleForce.webelements;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.SaleForce.POM.CreateProduct;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -26,22 +29,31 @@ public class SaleForce_Product {
 		try
 		{
 			driver.findElement(CreateProductPOM.Tab()).click();
+			WebDriverWait wait = new WebDriverWait(driver,10);
+				try
+				{
+					wait.until(ExpectedConditions.visibilityOfElementLocated(CreateProductPOM.PopUpWindow()));
+					//Close the popup window
+					driver.findElement(CreateProductPOM.PopUpWindow()).click();
+				}
+				catch(Exception f) {}
 			driver.findElement(CreateProductPOM.New()).click();
 			driver.findElement(CreateProductPOM.Product_Name()).sendKeys(Product_Name);
 			driver.findElement(CreateProductPOM.Product_Code()).sendKeys(Utility_Libraries.fTimestamp());
+			driver.findElement(CreateProductPOM.ActiveCheck()).click();
 			driver.findElement(CreateProductPOM.Save()).click();
 			String Product = driver.findElement(CreateProductPOM.Verify()).getText();
 				if(Product.contains(Product_Name))
 				{
 					//-----------------------------Reporter
-					Utility_Object.fReportpass("Create Product", "product has been successfully created " + Product, logger, driver);
+					Utility_Object.fReportpass("Create Product", "Product has been successfully created " + Product, logger, driver);
 					//------------------------------------
 					return Product;
 				}
 				else
 				{
 					//-----------------------------Reporter
-					Utility_Object.fReportfail("Create Product", "product has been not successfully created", logger, driver, Extndreport);
+					Utility_Object.fReportfail("Create Product", "Product has been not successfully created", logger, driver, Extndreport);
 					//------------------------------------
 				}
 		}

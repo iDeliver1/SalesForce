@@ -63,14 +63,14 @@ public class SaleForce_Accounts {
 				if(Account_Created.contains(AccountName))
 				{
 					//-----------------------------Reporter
-					UtilityObject.fReportpass("Account create", "Account is created successfully", logger, driver);
+					UtilityObject.fReportpass("Account create", "Account is created successfully : Account Name = "+ Account_Created, logger, driver);
 					//------------------------------------
 					return Account_Created;
 				}
 				else 
 				{
 					//-----------------------------Reporter
-					UtilityObject.fReportfail("Account create", "Account is not created successfully", logger, driver, Extndreport);
+					UtilityObject.fReportfail("Account create", "Account is not created successfully: Account Name = "+ Account_Created, logger, driver, Extndreport);
 					//------------------------------------
 				}
 	    }
