@@ -8,7 +8,6 @@ import com.relevantcodes.extentreports.ExtentTest;
 
 public class SalesForce_Orders {
 		
-	
 		WebDriver driver;
 		ExtentTest logger;
 		ExtentReports Extndreport;
@@ -39,13 +38,13 @@ public class SalesForce_Orders {
 				 	{
 				 		driver.findElement(CreateOrderPOM.AccountName()).isDisplayed();
 						//-----------------------------Reporter
-				 		UtilityObject.fReportpass("Create Contract", "Create Contract page is open successfully", logger, driver);
+				 		UtilityObject.fReportpass("Create Order", "Create Order page is open successfully", logger, driver);
 						//------------------------------------
 				 	}
 				 	catch(Exception e)
 				 	{
 				 		//-----------------------------Reporter
-				 		UtilityObject.fReportfail("Create Contract", "Error :" + e +" Create Contract page is not open successfully", logger, driver, Extndreport);
+				 		UtilityObject.fReportfail("Create Order", "Error :" + e +" Create Order page is not open successfully", logger, driver, Extndreport);
 						//------------------------------------
 				 	}
 				 	
