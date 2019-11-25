@@ -53,4 +53,58 @@ public class CreateProduct {
 		By Source = By.xpath(Utility_Libraries.fGetElement("Verify", "Product"));
 		return Source;
 	}
+	
+	public By Add() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Add", "Product"));
+		return Source;
+	}
+	
+	public By StandedPrice() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("StandedPrice", "Product"));
+		return Source;
+	}
+	
+	public By PriceSave() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("PriceSave", "Product"));
+		return Source;
+	}	
+	
+	public By VerifyPrice() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("VerifyPrice", "Product"));
+		return Source;
+	}
+	
+	public By PriceBookAdd() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("PriceBookAdd", "Product"));
+		return Source;
+	}
+	
+	public By CheckBox() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("CheckBox", "Product"));
+		return Source;
+	}
+	
+	public By Select_() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("Select", "Product"));
+		return Source;
+	}	
+	
+	public By PriceCheckBox() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("PriceCheckBox", "Product"));
+		return Source;
+	}
+	
+	public By ListPriceSave() throws Throwable
+	{
+		By Source = By.xpath(Utility_Libraries.fGetElement("ListPriceSave", "Product"));
+		return Source;
+	}
 }

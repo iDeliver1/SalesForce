@@ -22,25 +22,33 @@ public class SaleForce_AddProduct {
 		this.Extndreport = Extndreport;
 	}
 
-	public void Product_Add()
+	public void Product_Add(String ProductName, String Quantity) throws Throwable
 	{
 		try
 		{
+			String Product = null;
 			driver.findElement(By.xpath("//input[@name='addProd']")).click();
 			List<WebElement> Productlist_  = driver.findElements(By.xpath("//div[contains(@id,'PRODUCT_NAME')]"));
 				for(int i=1;i<=Productlist_.size();i++)
 				{
-					if(Productlist_.get(i).getText().contains(""))
+					if(Productlist_.get(i).getText().contains(ProductName))
 					{
+						Product = Productlist_.get(i).getText();
 						List<WebElement> ProductChecklist_  = driver.findElements(By.xpath("//input[contains(@class,'checkbox')]"));
 						ProductChecklist_.get(i).click();
+							//-----------------------------Reporter
+							UtilityObject.fReportpass("Product Select", "Product is selected by checkbox " + Product, logger, driver);
+							//------------------------------------
 						break;
 					}
 				}
 				driver.findElement(By.xpath("//input[@name='edit']")).click();
-				driver.findElement(By.xpath("//input[contains(@id,'Quantity')]")).sendKeys("1");
+				driver.findElement(By.xpath("//input[contains(@id,'Quantity')]")).sendKeys(Quantity);
 				driver.findElement(By.xpath("//table[contains(@class,'genericTable ')]//tr[1]//descendant::input[@title='Save']")).click();
 				driver.findElement(By.xpath("//input[@title='Edit All']")).isDisplayed();
+					//-----------------------------Reporter
+					UtilityObject.fReportpass("Product add", "Product " + Product +"is successfully added in the current order ", logger, driver);
+					//------------------------------------
 		}
 		catch(Exception e)
 		{

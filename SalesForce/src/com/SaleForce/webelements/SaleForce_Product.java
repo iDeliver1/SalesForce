@@ -24,7 +24,7 @@ public class SaleForce_Product {
 		this.Extndreport = Extndreport;
 	}
 
-	public String Create_Product(String Product_Name) throws Throwable
+	public String Create_Product(String Product_Name,String Price) throws Throwable
 	{
 		try
 		{
@@ -46,16 +46,50 @@ public class SaleForce_Product {
 				if(Product.contains(Product_Name))
 				{
 					//-----------------------------Reporter
-					Utility_Object.fReportpass("Create Product", "Product has been successfully created " + Product, logger, driver);
+					Utility_Object.fReportpass("Create Product", "Product has been successfully created " + Product + " name.", logger, driver);
 					//------------------------------------
-					return Product;
 				}
 				else
 				{
 					//-----------------------------Reporter
-					Utility_Object.fReportfail("Create Product", "Product has been not successfully created", logger, driver, Extndreport);
+					Utility_Object.fReportfail("Create Product", "Product has been not successfully created " + Product + " name.", logger, driver, Extndreport);
 					//------------------------------------
 				}
+			driver.findElement(CreateProductPOM.Add()).click();
+			driver.findElement(CreateProductPOM.StandedPrice()).sendKeys(Price);
+			driver.findElement(CreateProductPOM.PriceSave()).click();
+				try
+				{
+					driver.findElement(CreateProductPOM.VerifyPrice()).isDisplayed();
+						//-----------------------------Reporter
+						Utility_Object.fReportpass("Price verify", "Price"+ Price +" is added in the product successfully", logger, driver);
+						//------------------------------------
+				}
+				catch(Exception e)
+				{
+						//-----------------------------Reporter
+						Utility_Object.fReportfail("Price verify", "Price"+ Price +" is not added in the product", logger, driver, Extndreport);
+						//------------------------------------
+				}
+			driver.findElement(CreateProductPOM.PriceBookAdd()).click();
+			driver.findElement(CreateProductPOM.CheckBox()).click();
+			driver.findElement(CreateProductPOM.Select_()).click();
+			driver.findElement(CreateProductPOM.PriceCheckBox()).click();
+			driver.findElement(CreateProductPOM.ListPriceSave()).click();
+			String Product_ = driver.findElement(CreateProductPOM.Verify()).getText();
+				if(Product_.contains(Product_Name))
+				{
+					//-----------------------------Reporter
+					Utility_Object.fReportpass("Create price", "Price Books and Standard Price is successfully created for the " + Product + " name.", logger, driver);
+					//------------------------------------
+					return Product_;
+				}
+				else
+				{
+					//-----------------------------Reporter
+					Utility_Object.fReportfail("Create price", "Price Books and Standard Price is not created for the " + Product + " name.", logger, driver, Extndreport);
+					//------------------------------------
+				}		
 		}
 		catch(Exception e)
 		{
