@@ -53,7 +53,7 @@ public class T_Order_Create {
 				
 			//---------------------------------Variables--------------------------------------
 			String[] Launch = {Browser, Url};
-			Utility_Libraries.fVerifyvalue(Launch,logger);
+			Utility_Libraries.fVerifyInputvalue(Launch,logger);
 			Browser 	= Launch[0];
 			Url 	    = Launch[1];
 			//--------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ public class T_Order_Create {
 			
 			//---------------------------------Variables--------------------------------------
 			String[] Login = {Username, Password};
-			Utility_Libraries.fVerifyvalue(Login,logger);
+			Utility_Libraries.fVerifyInputvalue(Login,logger);
 			Username 	= Login[0];
 			Password 	= Login[1];
 			//--------------------------------------------------------------------------------
@@ -95,7 +95,7 @@ public class T_Order_Create {
 			String AccountDescription = Excel_Libraries.fRead("AccountDescription", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Account");
 			
 			String[] Account = {AccountName, AccountNumber, AccountDescription};
-			Utility_Libraries.fVerifyvalue(Account,logger);
+			Utility_Libraries.fVerifyInputvalue(Account,logger);
 			AccountName 		= Account[0];
 			AccountNumber 		= Account[1];
 			AccountDescription  = Account[2];
@@ -121,7 +121,7 @@ public class T_Order_Create {
 			String DescriptionArea  = Excel_Libraries.fRead("DescriptionArea", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Contracts");
 			
 			String[] Contracts = {CustomerName, CustomerTitle, PriceBook, ContractMonth, OwnerExpiration,DescriptionArea};
-			Utility_Libraries.fVerifyvalue(Contracts,logger);
+			Utility_Libraries.fVerifyInputvalue(Contracts,logger);
 			CustomerName 	 = Contracts[0];
 			CustomerTitle 	 = Contracts[1];
 			PriceBook        = Contracts[2];
@@ -146,7 +146,7 @@ public class T_Order_Create {
 			String Price 	     = Excel_Libraries.fRead("Price", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Product");
 			
 			String[] Product = {Product_Name,Price};
-			Utility_Libraries.fVerifyvalue(Product,logger);
+			Utility_Libraries.fVerifyInputvalue(Product,logger);
 			Product_Name  = Product[0];
 			Price 		  = Product[1];
 			
@@ -168,7 +168,7 @@ public class T_Order_Create {
 			String OrderDescription   = Excel_Libraries.fRead("OrderDescription", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Order");
 			
 			String[] Order = {AccountName, ContractNumber, OrderDescription};
-			Utility_Libraries.fVerifyvalue(Order,logger);
+			Utility_Libraries.fVerifyInputvalue(Order,logger);
 			AccountName 	  = Order[0];
 			ContractNumber 	  = Order[1];
 			OrderDescription  = Order[2];
@@ -190,7 +190,7 @@ public class T_Order_Create {
 			String Quantity 	= Excel_Libraries.fRead("Quantity", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Product");
 			
 			String[] ProductAdd = {ProductName, Quantity};
-			Utility_Libraries.fVerifyvalue(ProductAdd,logger);
+			Utility_Libraries.fVerifyInputvalue(ProductAdd,logger);
 			ProductName   = ProductAdd[0];
 			Quantity 	  = ProductAdd[1];
 			

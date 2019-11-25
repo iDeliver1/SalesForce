@@ -108,6 +108,27 @@ public class Utility_Libraries {
 	   }
 	   return Array;
    }
+   
+   public static String[] fVerifyInputvalue(String[] Array,ExtentTest logger)
+   {
+	   for(int i=0;i<=Array.length-1;i++)
+	   {
+		   Assert.assertNotNull(Array[i].toString(), "Input parameter value : ");
+		   logger.log(LogStatus.PASS,Array[i].toString(), "Input parameter value : ");
+	   }
+	   return Array;
+   }
+   
+   public static String[] fVerifyOutputvalue(String[] Array,ExtentTest logger)
+   {
+	   for(int i=0;i<=Array.length-1;i++)
+	   {
+		   Assert.assertNotNull(Array[i].toString(), "Output parameter value : ");
+		   logger.log(LogStatus.PASS,Array[i].toString(), "Output parameter value : ");
+	   }
+	   return Array;
+   }
+   
    public void fReportpass(String Step_details,String Actual,ExtentTest logger, WebDriver repdriver) throws Throwable
 	{
 		  //===========================Reporter======================================================================================

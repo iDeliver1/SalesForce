@@ -44,6 +44,9 @@ public class SaleForce_AddProduct {
 				}
 				driver.findElement(By.xpath("//input[@name='edit']")).click();
 				driver.findElement(By.xpath("//input[contains(@id,'Quantity')]")).sendKeys(Quantity);
+					//-----------------------------Reporter
+					UtilityObject.fReportpass("Product Quantity", "Product " + Product +" Product Quantity is added", logger, driver);
+					//------------------------------------
 				driver.findElement(By.xpath("//table[contains(@class,'genericTable ')]//tr[1]//descendant::input[@title='Save']")).click();
 				driver.findElement(By.xpath("//input[@title='Edit All']")).isDisplayed();
 					//-----------------------------Reporter
@@ -52,10 +55,9 @@ public class SaleForce_AddProduct {
 		}
 		catch(Exception e)
 		{
-			
-		}
-			   
-			
-			
+			//-----------------------------Reporter
+			UtilityObject.fReportfail("Error message", "Error : "+ e, logger, driver, Extndreport);
+			//------------------------------------
+		}	
 	}
 }
