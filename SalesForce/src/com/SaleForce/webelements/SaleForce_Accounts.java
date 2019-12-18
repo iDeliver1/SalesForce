@@ -3,9 +3,7 @@ package com.SaleForce.webelements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.SaleForce.POM.CreateAccounts;
-import com.SaleForce.POM.CreateContract;
 import com.SaleForce.libraries.Utility_Libraries;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -15,7 +13,6 @@ public class SaleForce_Accounts {
 	WebDriver driver;
 	ExtentTest logger;
 	ExtentReports Extndreport;
-	CreateContract CreateContractPOM = new CreateContract();
 	CreateAccounts CreateAccountPOM = new CreateAccounts();
 	Utility_Libraries UtilityObject = new Utility_Libraries();
 	

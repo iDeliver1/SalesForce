@@ -114,7 +114,7 @@ public class Utility_Libraries {
 	   for(int i=0;i<=Array.length-1;i++)
 	   {
 		   Assert.assertNotNull(Array[i].toString(), "Input parameter value : ");
-		   logger.log(LogStatus.PASS,Array[i].toString(), "Input parameter value : ");
+		   logger.log(LogStatus.PASS,"Data Load", "Input parameter value : "+Array[i].toString());
 	   }
 	   return Array;
    }
@@ -124,7 +124,7 @@ public class Utility_Libraries {
 	   for(int i=0;i<=Array.length-1;i++)
 	   {
 		   Assert.assertNotNull(Array[i].toString(), "Output parameter value : ");
-		   logger.log(LogStatus.PASS,Array[i].toString(), "Output parameter value : ");
+		   logger.log(LogStatus.PASS,"Data Load", "Output parameter value : "+Array[i].toString());
 	   }
 	   return Array;
    }
