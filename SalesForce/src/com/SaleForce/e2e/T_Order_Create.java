@@ -176,6 +176,7 @@ public class T_Order_Create {
 			//--------------------------------------------------------------------------------
 			SaleForce_Orders objOrderClass = new SaleForce_Orders(logger, driver, Extndreport);
 			Order_Number = objOrderClass.Create_Orders(AccountName, ContractNumber, OrderDescription);  
+			Excel_Libraries.fWrite(Order_Number, System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Order");
 		}
 	
 	@Test(priority=7,enabled=true)

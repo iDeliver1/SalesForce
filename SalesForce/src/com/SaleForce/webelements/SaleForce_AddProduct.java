@@ -30,7 +30,7 @@ public class SaleForce_AddProduct {
 			String Product = null;
 			driver.findElement(AddProductPOM.AddProduct_()).click();
 			List<WebElement> Productlist_  = driver.findElements(AddProductPOM.ProductName());
-				for(int i=1;i<=Productlist_.size();i++)
+				for(int i=0;i<=Productlist_.size();i++)
 				{
 					if(Productlist_.get(i).getText().contains(ProductName))
 					{

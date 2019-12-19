@@ -3,8 +3,10 @@ package com.SaleForce.libraries;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
+import java.io.IOException;
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -69,6 +71,19 @@ public class Excel_Libraries {
 				return Excel_path;
 			}
 
+	 public static void fWrite(String Attri_Value,String File_name,String Sheet_name) throws EncryptedDocumentException, InvalidFormatException, IOException
+	 {
+		 Workbook WB;
+		 FileInputStream fin=new FileInputStream(File_name);
+		 WB=WorkbookFactory.create(fin);
+		 Sheet sh = WB.getSheet(Sheet_name);
+		 Row rw_obj = sh.createRow(3);
+		 rw_obj.createCell(0).setCellValue("OrderNumber");
+		 rw_obj.createCell(1).setCellValue(Attri_Value);
+		 FileOutputStream fout = new FileOutputStream(File_name);
+		 WB.write(fout);
+		 WB.close();
+	 }
 	 //------------------------------------------For data access--------------------------------------------
 	 public static String fRead(String Attri_name,String File_name,String Sheet_name) throws Throwable
 	     {

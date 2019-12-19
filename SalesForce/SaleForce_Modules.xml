@@ -8,6 +8,10 @@
 	  <parameter name="Url" value="https://login.salesforce.com/?locale=in"/>
     <classes>
       <class name="com.SaleForce.e2e.T_SaleForce_Modules"/>
+      <class name="com.SaleForce.e2e.T_Leads"/>
+      <class name="com.SaleForce.e2e.T_Contracts"/>
+      <class name="com.SaleForce.e2e.T_Campaign"/>
+      <class name="com.SaleForce.e2e.T_Accounts"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
