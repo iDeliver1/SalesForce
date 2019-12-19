@@ -49,7 +49,7 @@ public class SaleForce_OrderUpdate {
 				{
 					OrderList.get(iterator).click();
 					//-----------------------------Reporter------------------------------------------/
-					UtilityObject.fReportpass("Order Select", OrderList.get(iterator) + " : Order is selected to update", logger, driver);
+					UtilityObject.fReportpass("Order Select", OrderList.get(iterator).getText() + " : Order is selected to update", logger, driver);
 					//-------------------------------------------------------------------------------
 					break;
 				}
