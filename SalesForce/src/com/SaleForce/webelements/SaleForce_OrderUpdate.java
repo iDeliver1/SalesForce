@@ -47,10 +47,10 @@ public class SaleForce_OrderUpdate {
 			{
 				if(OrderList.get(iterator).getText().equals(OrderNumber))
 				{
-					OrderList.get(iterator).click();
 					//-----------------------------Reporter------------------------------------------/
 					UtilityObject.fReportpass("Order Select", OrderList.get(iterator).getText() + " : Order is selected to update", logger, driver);
 					//-------------------------------------------------------------------------------
+					OrderList.get(iterator).click();
 					break;
 				}
 			}
