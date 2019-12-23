@@ -39,12 +39,12 @@ public class CreateAccounts {
 	
 	public By Account_Save() throws Throwable
 	{
-		return Utility_Libraries.fGetPOMvalue("xpath","Username","Login");
+		return Utility_Libraries.fGetPOMvalue("xpath","Account_Save","Account");
 	}
 	
 	public By AccountVerification() throws Throwable
 	{
-		return Utility_Libraries.fGetPOMvalue("xpath","Username","Login");
+		return Utility_Libraries.fGetPOMvalue("xpath","AccountVerification","Account");
 	}
 
 }
