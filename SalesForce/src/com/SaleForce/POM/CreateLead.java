@@ -8,61 +8,51 @@ public class CreateLead {
 
 	public By LeadTab() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("LeadTab", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","LeadTab","Leads");
 	}
 	
 	public By New() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("New", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","New","Leads");
 	}
 	
 	public By FName() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("FName", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","FName","Leads");
 	}
 	
 	public By Campaign() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Campaign", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Campaign","Leads");
 	}
 	
 	public By LName() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("LName", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","LName","Leads");
 	}
 	
 	public By CompanyName() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("CompanyName", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","CompanyName","Leads");
 	}
 	
 	public By Close() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Close", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Close","Leads");
 	}
 	
 	public By Status() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Status", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Status","Leads");
 	}
 	
 	public By Save() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Save", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Save","Leads");
 	}
 	
 	public By HeadName() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("HeadName", "Leads"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","HeadName","Leads");
 	}
 }

@@ -7,61 +7,51 @@ public class Login {
 	
 	public By Username() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Username", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Username","Login");
 	}
 	
 	public By Password() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Password", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Password","Login");
 	}
 
 	public By Signin() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Signin", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Signin","Login");
 	}
 	
 	public By OTPText() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("OTPText", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","OTPText","Login");
 	}
 	
 	public By Save() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Save", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Save","Login");
 	}
 
 	public By Tab() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Tab", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Tab","Login");
 	}
 	
 	public By UserError() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("UserError", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","UserError","Login");
 	}
 	
 	public By YopUser() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("YopUser", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","YopUser","Login");
 	}
 
 	public By YopSubmit() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("YopSubmit", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","YopSubmit","Login");
 	}
 	
 	public By Message() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Message", "Login"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Message","Login");
 	}
 }

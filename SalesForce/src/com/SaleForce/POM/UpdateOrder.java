@@ -8,30 +8,25 @@ public class UpdateOrder {
 
 	public By OrderTab() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("OrderTab", "UpdateOrder"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Username","UpdateOrder");
 	}
 	
 	public By PopUpWindow() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("PopUpWindow", "UpdateOrder"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Username","UpdateOrder");
 	}
 	
 	public By View() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("View", "UpdateOrder"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Username","UpdateOrder");
 	}
 	
 	public By Go() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Go", "UpdateOrder"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Username","UpdateOrder");
 	}
 	public By OrderList() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("OrderList", "UpdateOrder"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Username","UpdateOrder");
 	}
 }

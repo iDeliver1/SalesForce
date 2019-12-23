@@ -8,43 +8,36 @@ public class AddProduct {
 
 	public By AddProduct_() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("AddProduct_", "AddProduct"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","AddProduct_","AddProduct");
 	}
 		
 	public By ProductName() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("ProductName", "AddProduct"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","ProductName","AddProduct");
 	}
 	
 	public By CheckBox() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("CheckBox", "AddProduct"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","CheckBox","AddProduct");
 	}	
 	
 	public By ProSelect() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("ProSelect", "AddProduct"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","ProSelect","AddProduct");
 	}
 	
 	public By Quantity() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Quantity", "AddProduct"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Quantity","AddProduct");
 	}
 	
 	public By Save_() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Save_", "AddProduct"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Save_","AddProduct");
 	}
 	
 	public By EditAll() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("EditAll", "AddProduct"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","EditAll","AddProduct");
 	}
 }

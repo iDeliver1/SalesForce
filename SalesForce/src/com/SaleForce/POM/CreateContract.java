@@ -8,98 +8,82 @@ public class CreateContract {
 
 	public By ContractTab() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("ContractTab", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","ContractTab","Contracts");
 	}	
 	
 	public By NewLink() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("New_Link", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","New_Link","Contracts");
 	}
 	
 	public By Account() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Account", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Account","Contracts");
 	}
 	
 	public By CustomerName() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Customer_Name", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Customer_Name","Contracts");
 	}
 	
 	public By CustomerSigned() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Customer_Signed", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Customer_Signed","Contracts");
 	}
 	
 	public By CustomerTitle() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Customer_Title", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Customer_Title","Contracts");
 	}
 	
 	public By CustomerDate() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Customer_Date", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Customer_Date","Contracts");
 	}
 	
 	public By PriceBook() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Price_Book", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Price_Book","Contracts");
 	}
 	
 	public By ContractDate() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Contract_Date", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Contract_Date","Contracts");
 	}
 	
 	public By ContractMonth() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Contract_Month", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Contract_Month","Contracts");
 	}
 	
 	public By OwnerExpirationNotice() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Owner_Expiration_Notice", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Owner_Expiration_Notice","Contracts");
 	}
 	
 	public By CompanySigned() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Company_Signed", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Company_Signed","Contracts");
 	}
 	
 	public By SaveButton() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Save_Button", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Save_Button","Contracts");
 	}
 	
 	public By PopUpWindow() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("PopUpWindow", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","PopUpWindow","Contracts");
 	}
 	
 	public By DescriptionArea() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Description_Area", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Description_Area","Contracts");
 	}
 	
 	public By PageDescription() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("PageDescription", "Contracts"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","PageDescription","Contracts");
 	}
 	
 }

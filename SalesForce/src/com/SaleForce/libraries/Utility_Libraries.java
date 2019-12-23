@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -182,5 +183,29 @@ public class Utility_Libraries {
 			}
 		String newDate = dateformat.format(calender.getTime());
 		return newDate;
+	}
+	
+	public static By fGetPOMvalue(String Locaters,String Keys,String FileName) throws Throwable
+	{
+		switch(Locaters.toLowerCase())
+		{	
+		case "xpath":
+			By xpath = By.xpath(Utility_Libraries.fGetElement(Keys, FileName));
+			return xpath;		
+		case "id":
+			By id = By.xpath(Utility_Libraries.fGetElement(Keys, FileName));
+			return id;	
+		case "name":
+			By name = By.xpath(Utility_Libraries.fGetElement(Keys, FileName));
+			return name;
+		case "class":
+			By class_ = By.xpath(Utility_Libraries.fGetElement(Keys, FileName));
+			return class_;
+		case "css":
+			By Source = By.xpath(Utility_Libraries.fGetElement(Keys, FileName));
+			return Source;
+		}
+		return null;
+		
 	}
 }

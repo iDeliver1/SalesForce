@@ -8,67 +8,56 @@ public class CreateCampaign {
 
 	public By Tab() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Tab", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Tab","Campaign");
 	}
 	
 	public By New() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("New", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","New","Campaign");
 	}
 	
 	public By Name() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Name", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Name","Campaign");
 	}
 	
 	public By Status() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Status", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Status","Campaign");
 	}
 	
 	public By S_Date() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("S_Date", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","S_Date","Campaign");
 	}
 	
 	public By E_Date() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("E_Date", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","E_Date","Campaign");
 	}
 	
 	public By Expected_rev() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Expected_rev", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Expected_rev","Campaign");
 	}
 	
 	public By Budget_cost() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Budget_cost", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Budget_cost","Campaign");
 	}
 	
 	public By Save() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Save", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Save","Campaign");
 	}
 	
 	public By HeadName() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("HeadName", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","HeadName","Campaign");
 	}
 	
 	public By Close() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Close", "Campaign"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Close","Campaign");
 	}
 }

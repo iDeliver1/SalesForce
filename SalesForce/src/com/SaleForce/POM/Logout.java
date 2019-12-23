@@ -8,19 +8,16 @@ public class Logout {
 
 	public By Account() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Account", "Logout"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Account","Logout");
 	}
 	
 	public By Logout_() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Logout", "Logout"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Logout","Logout");
 	}
 	
 	public By LogoutVerify() throws Throwable
 	{
-		By Source = By.xpath(Utility_Libraries.fGetElement("Logout_Verify", "Logout"));
-		return Source;
+		return Utility_Libraries.fGetPOMvalue("xpath","Logout_Verify","Logout");
 	}
 }

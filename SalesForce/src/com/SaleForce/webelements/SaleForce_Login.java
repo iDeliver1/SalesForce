@@ -97,7 +97,7 @@ public class SaleForce_Login {
 				objdriver1.switchTo().frame(2);
 				//Get the code from the email0
 				String Code = objdriver1.findElement(LoginPOM.Message()).getText();
-				Code = Code.substring(290, 315).replaceAll("[^0-9]", "");
+				Code = Code.substring(290, 316).replaceAll("[^0-9]", "");
 					//-----------------------------Reporter
 					Utility_Object.fReportpass("Email_Verification", "Code has been successfully retrive " + Code, logger, objdriver1);
 					//------------------------------------
