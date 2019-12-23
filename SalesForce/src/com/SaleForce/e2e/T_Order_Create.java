@@ -1,11 +1,16 @@
 package com.SaleForce.e2e;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -32,6 +37,12 @@ public class T_Order_Create {
 	String Account_Name;
 	String Order_Number;
 	String Product_Name_;
+	
+	@BeforeSuite
+	public void DeleteFolder() throws IOException
+	{
+		FileUtils.deleteDirectory(new File("C:\\Reporting\\Report"));
+	}
 	
 	@BeforeTest
 	public void Create() throws Throwable 
@@ -238,4 +249,5 @@ public class T_Order_Create {
 			driver.close();
 			driver.quit();
 		}
+
 }

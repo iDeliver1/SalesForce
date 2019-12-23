@@ -22,7 +22,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class Utility_Libraries {
 
-	static String Report_Folder_path = "C:\\Reporting\\Report"+Utility_Libraries.fTimestamp();
+	static String Report_Folder_path = "C:\\Reporting\\Report";
 	static String Report_Excel_path = Report_Folder_path+"\\Excelreport"+Utility_Libraries.fTimestamp()+".xls";
 
   public static WebDriver fgetBrowser(String strBrowserName, WebDriver driver)
