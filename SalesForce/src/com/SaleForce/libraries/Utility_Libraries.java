@@ -88,16 +88,16 @@ public class Utility_Libraries {
 	{
 		FileInputStream pagobj =null;
 		Properties obj = new Properties();
-		try
-		{ 
-			pagobj = new FileInputStream (System.getProperty("user.dir")+"\\src\\com\\SaleForce\\properties\\" + FileName + ".properties");
-		}
-		catch (Exception e) 
-		{	
-			System.out.println("File is not found");
-		}
-			obj.load(pagobj);
-			return obj.getProperty(Keys);
+			try
+			{ 
+				pagobj = new FileInputStream (System.getProperty("user.dir")+"\\src\\com\\SaleForce\\properties\\" + FileName + ".properties");
+			}
+			catch (Exception e) 
+			{	
+				System.out.println("File is not found");
+			}
+		obj.load(pagobj);
+		return obj.getProperty(Keys);
 	}
    
    public static String[] fVerifyvalue(String[] Array,ExtentTest logger)
