@@ -24,6 +24,7 @@ public class Generic_Libraries {
 	
 	public void Click(WebElement Element) throws Throwable
 	{
+		
 		try {
 			if(Element.isEnabled())
 			{
@@ -37,16 +38,20 @@ public class Generic_Libraries {
 	
 	public boolean GetText(WebElement Element, String CompareType,String Val) throws Throwable
 	{
-		try {
-			switch (CompareType.toLowerCase())
-			{
-			  case "equalsIgnoreCase" :
-				  return Element.getText().equalsIgnoreCase(Val);
-				  
-			  case "contains" :
-				  return Element.getText().contains(Val);
-			}
-		} catch (Throwable e) {
+		try 
+		{
+			Element.isDisplayed();
+				switch (CompareType.toLowerCase())
+				{
+				  case "equalsIgnoreCase" :
+					  return Element.getText().equalsIgnoreCase(Val);
+					  
+				  case "contains" :
+					  return Element.getText().contains(Val);
+				}
+		} 
+		catch (Throwable e) 
+		{
 			System.out.println(e);
 			UtilityObject.fReportfail("Error", "Error : "+e, logger, driver, Extndreport);
 		}
