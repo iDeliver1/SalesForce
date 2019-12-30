@@ -120,8 +120,7 @@ public class T_Order_Update {
 			ProductName   = ProductAdd[0];
 			Quantity 	  = ProductAdd[1];
 			
-			SaleForce_AddProduct objOrderClass = new SaleForce_AddProduct(logger, driver, Extndreport);
-			objOrderClass.Product_Add(ProductName, Quantity);
+			
 		}
 	
 	@Test(priority=5,enabled=true)

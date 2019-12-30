@@ -5,7 +5,6 @@ import java.util.Date;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -16,6 +15,7 @@ import com.SaleForce.webelements.SaleForce_AddProduct;
 import com.SaleForce.webelements.SaleForce_Contracts;
 import com.SaleForce.webelements.SaleForce_Login;
 import com.SaleForce.webelements.SaleForce_Logout;
+import com.SaleForce.webelements.SaleForce_OrderUpdate;
 import com.SaleForce.webelements.SaleForce_Product;
 import com.SaleForce.webelements.SaleForce_Orders;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -36,11 +36,8 @@ public class T_Order_Create {
 	@BeforeTest
 	public void Create() throws Throwable 
 		{	 
-			//--------------------------------------------Calling report-----------------------------------------------
 			Extndreport = Utility_Libraries.fReport();
-			//------------------------------------------Create a Excel file--------------------------------------------
 			Excel_Libraries.fCreateExcelfile(); 
-			logger 		= Extndreport.startTest(testName); 
 		}
 	
 	@Parameters({ "Browser" , "Url" , "Username" , "Password"})
@@ -86,7 +83,7 @@ public class T_Order_Create {
 			Quantity 	  		= Order_Create[15];
 			
 			//Launch
-			driver = Utility_Libraries.fgetBrowser(Browser, driver);					 
+								 
 			driver.navigate().to(Url);	
 			driver.manage().window().maximize();
 			
@@ -109,7 +106,6 @@ public class T_Order_Create {
 			//Order Create
 			SaleForce_Orders objOrderClass = new SaleForce_Orders(logger, driver, Extndreport);
 			Order_Number = objOrderClass.Create_Orders(Account_Name, Contract_Number, OrderDescription);  
-			Excel_Libraries.fWrite(Order_Number, System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Order");
 			
 			//Add Product
 			SaleForce_AddProduct objAddProductClass = new SaleForce_AddProduct(logger, driver, Extndreport);
@@ -118,7 +114,61 @@ public class T_Order_Create {
 			//Logout
 			SaleForce_Logout objLogoutClass =  new SaleForce_Logout(logger, driver, Extndreport);	
 			objLogoutClass.Logout();
+			
+			//Close
+			driver.close();
+			driver.quit();
 		}
+	
+	@Parameters({ "Browser" , "Url" , "Username" , "Password"})
+	@Test(priority=2,enabled=true)
+	public void Order_Update(String Browser, String Url, String Username, String Password) throws Throwable
+	{
+		//----------------------------------------------Start report test-------------------------------------------------
+		testName	= new Object(){}.getClass().getEnclosingMethod().getName();
+		logger 		= Extndreport.startTest(testName);
+		
+		//Data Load
+		String OrderNumber 	= Order_Number;
+		String ProductName 	= Excel_Libraries.fRead("Product_Name_1", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Product");
+		String Quantity 	= Excel_Libraries.fRead("Quantity", System.getProperty("user.dir")+"\\src\\com\\SaleForce\\data\\Data.xlsx", "Product");
+		
+		//Data Load Verify
+		String[] OrderUpdate = {Browser, Url, Username, Password, OrderNumber, ProductName, Quantity};
+		Utility_Libraries.fVerifyInputvalue(OrderUpdate,logger);
+		Browser   	  = OrderUpdate[0];
+		Url   		  = OrderUpdate[1];
+		Username      = OrderUpdate[2];
+		Password      = OrderUpdate[3];
+		OrderNumber   = OrderUpdate[4];
+		ProductName   = OrderUpdate[5];
+		Quantity   	  = OrderUpdate[6];
+		
+		//Launch
+		driver = Utility_Libraries.fgetBrowser(Browser, driver);					 
+		driver.navigate().to(Url);	
+		driver.manage().window().maximize();
+		
+		//Login
+		SaleForce_Login objLoginClass =  new SaleForce_Login(logger, driver, Extndreport);						
+		objLoginClass.Login(Username,Password);	
+		
+		//Order Update
+		SaleForce_OrderUpdate objOrderUpdate = new SaleForce_OrderUpdate(logger, driver, Extndreport);
+		objOrderUpdate.Order_Update(OrderNumber);
+		
+		//Add Product
+		SaleForce_AddProduct objOrderClass = new SaleForce_AddProduct(logger, driver, Extndreport);
+		objOrderClass.Product_Add(ProductName, Quantity);
+		
+		//Logout
+		SaleForce_Logout objLogoutClass =  new SaleForce_Logout(logger, driver, Extndreport);	
+		objLogoutClass.Logout();
+		
+		//Close
+		driver.close();
+		driver.quit();
+	}
 	
 	@AfterMethod	
 	public void Flush(ITestResult result) throws Throwable		
@@ -141,12 +191,4 @@ public class T_Order_Create {
 				  Extndreport.endTest(logger);
 				  Extndreport.flush();
 		}
-	
-	@AfterTest
-	public void Close()
-		{
-			driver.close();
-			driver.quit();
-		}
-
 }
